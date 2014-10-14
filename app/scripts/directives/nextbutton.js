@@ -25,6 +25,7 @@ angular.module('ycBookingApp')
                                 $scope.callback()
                             }
                             if (nextIndex < $scope.tabs.length) {
+                                console.log("->", $scope.tabs[nextIndex].id);
                                 $state.go($scope.tabs[nextIndex].id, {}, {
                                     location: false
                                 });
