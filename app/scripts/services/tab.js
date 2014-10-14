@@ -18,7 +18,7 @@ angular.module('ycBookingApp')
                 template: 'account.html'
       },
             {
-                id: 'product',
+                id: 'booking',
                 title: 'Configure Product',
                 icon: 'shopping-cart'
 
