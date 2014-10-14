@@ -46,6 +46,7 @@ angular.module('ycBookingApp')
                     $scope[fromState.name].valid = $scope[fromState.name].form.$valid;
                 }
                 if (!isEnabled(toState.name)) {
+                    console.log(toState.name, "is disabled");
                     $scope.$broadcast('show-errors-check-validity');
                     event.preventDefault();
                 }
