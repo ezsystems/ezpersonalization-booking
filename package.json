@@ -35,7 +35,8 @@
     "imagemin-gifsicle": "^2.0.0",
     "imagemin-jpegtran": "^2.0.0",
     "imagemin-optipng": "^2.0.1",
-    "imagemin-svgo": "^2.0.0"
+    "imagemin-svgo": "^2.0.0",
+    "imagemin-pngquant": "^2.0.0"
 
   },
   "engines": {
