@@ -50,6 +50,7 @@ angular
             //                $sessionStorage.paymentReturn = $location.search();
             //                return '/paymentDone';
             //            });
+            
             $stateProvider
                 .state('root', {
                     url: '/?productCode',
@@ -57,7 +58,7 @@ angular
                     controller: 'InitCtrl'
                 })
                 .state('booking', {
-                    url: '/booking',
+                    url: '/product',
                     templateUrl: 'views/booking.html',
                     controller: 'BookingCtrl'
                 })
