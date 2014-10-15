@@ -8,7 +8,7 @@
                 </select>
             </div>
 
-            <div class="payment-elv" data-ng-show="isDebit()">
+            <div class="payment-elv" data-ng-if="isDebit()">
                 <div class="form-group col-sm-12" show-errors>
                     <label for="accountHolder" class="control-label" translate="account_holder"></label>
                     <input data-ng-model="payment.accountHolder" ng-required="isDebit()" id="accountHolder" name="accountHolder" type="text" class="form-control" placeholder="{{'account_holder' | translate}}" />
@@ -22,7 +22,7 @@
                     <input data-ng-model="payment.bankRoutingCode" ng-required="isDebit()" id="bankRoutingCode" name="bankRoutingCode" maxlength="8" type="text" class="form-control" placeholder="{{'bank_routing_code' | translate}}" />
                 </div>
             </div>
-            <div class="payment-cc" data-ng-show="isCreditCard()">
+            <div class="payment-cc" data-ng-if="isCreditCard()">
                 <!-- Note that the input fields don't have a 'name' set, rendering it impossible for the browser
                 to post these fields even if something went wrong in our first line of defense of not having
                 an action on the form. -->
