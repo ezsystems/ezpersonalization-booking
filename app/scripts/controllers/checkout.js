@@ -99,11 +99,11 @@ angular.module('ycBookingApp')
                     'country': billingData.country
                 }
             };
-            if ($scope.validto !== undefined) {
-                paymentData.expiryMonth = extractMonth($scope.validto);
-                paymentData.expiryYear = extractYear($scope.validto);
+            if (paymentData.validto !== undefined) {
+                paymentData.expiryMonth = extractMonth(paymentData.validto);
+                paymentData.expiryYear = extractYear(paymentData.validto);
             }
-            console.log($scope.validto, paymentData);
+            console.log(paymentData);
 
             var signup = new IteroJS.Signup();
 

@@ -11,8 +11,8 @@ angular.module('ycBookingApp')
         if ($stateParams.directId !== undefined) {
             $sessionStorage.directId = $stateParams.directId;
         }
-        if ($stateParams.productCode !== undefined) {
-            $sessionStorage.productcode = $stateParams.productCode;
+        if ($stateParams.product !== undefined) {
+            $sessionStorage.productcode = $stateParams.product;
         }
         if ($sessionStorage.productcode === undefined) {
             $location.url('/pricing?lang=' + $translate.use());
