@@ -50,7 +50,7 @@ angular
             //                $sessionStorage.paymentReturn = $location.search();
             //                return '/paymentDone';
             //            });
-            
+
             $stateProvider
                 .state('root', {
                     url: '/?product',
@@ -81,7 +81,21 @@ angular
                 .state('billing', {
                     url: '/billing',
                     templateUrl: 'views/billing.html',
-                    controller: 'BillingCtrl'
+                    controller: 'BillingCtrl',
+                    resolve: {
+                        location: function ($sessionStorage, $http) {
+                            if ($sessionStorage.country !== undefined && $sessionStorage.country !== null) {
+                                return $sessionStorage.country;
+                            }
+                            return $http.jsonp('http://ipinfo.io/?callback=JSON_CALLBACK')
+                                .then(function(data) {
+                                    $sessionStorage.country = data.data.country;
+                                    return data.data.country;
+                            });
+                            
+                            
+                        }
+                    }
 
                 })
                 .state('finished', {
@@ -128,7 +142,7 @@ angular
                         }
                     }
                 })
-            
+
             ;
         }
         ]);
