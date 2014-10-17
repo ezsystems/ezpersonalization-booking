@@ -6,7 +6,7 @@
  * Controller of the ycBookingApp
  */
 angular.module('ycBookingApp')
-    .controller('FinishedCtrl', function ($scope, $stateParams, $timeout) {
+    .controller('FinishedCtrl', function ($scope, $stateParams, $timeout, ycRestfrontend) {
         'use strict';
 
         $scope.contractid = $stateParams.contractid;
@@ -15,9 +15,13 @@ angular.module('ycBookingApp')
 
         $scope.setupFinished = false;
 
-        $timeout(function () {
+        ycRestfrontend.confirmOrder({
+            orderId: $stateParams.orderid,
+            contractId: $stateParams.contractid
+        }).$promise.then(function (response) {
             $scope.setupFinished = true;
-            $scope.mandatorid = 'FRESH_NEW_1111';
-        }, 3000);
+            $scope.mandatorid = response;
+        });
+
 
     });

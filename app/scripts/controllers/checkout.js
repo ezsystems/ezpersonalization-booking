@@ -6,7 +6,7 @@
  * Controller of the ycBookingApp
  */
 angular.module('ycBookingApp')
-    .controller('CheckoutCtrl', function ($scope, $state, $timeout, $location, $sessionStorage) {
+    .controller('CheckoutCtrl', function ($scope, $state, $timeout, $location, $sessionStorage, ycRestfrontend) {
         'use strict';
         var self = this;
     
@@ -73,7 +73,7 @@ angular.module('ycBookingApp')
             $scope.errorCode =[];
 
             var cart = {
-                planVariantId: cartData.planVariantId,
+                planVariantId: ycRestfrontend.getPlan(cartData.productcode).comaId.variant,
                 customFields: {
                     website: cartData.website
                 }
@@ -109,7 +109,15 @@ angular.module('ycBookingApp')
 
             signup.createOrder(cart, customerData, function (order) {
                     // link contract and login here
-                    console.log(order);
+                    var ycOrder = {
+                        orderId: order.OrderId,
+                        customerId: order.CustomerId,
+                        productId: cartData.productcode,
+                        timeZone: billingData.timezone,
+                        websiteUrl: billingData.website
+                    };
+                    
+                    ycRestfrontend.createOrder(ycOrder);
 
                     //continue to payment
                     signup.paySignupInteractive(self.iteroJSPayment, paymentData, order, function (data) {

@@ -22,9 +22,9 @@ angular.module('ycBookingApp')
                 if (product.notAvailable) {
                     continue;
                 }
-                result[product.name] = product.comaId.variant;
-                if ($sessionStorage.productcode === product.id && !$scope.booking.planVariantId) {
-                    $scope.booking.planVariantId = product.comaId.variant;
+                result[product.name] = product.id;
+                if ($sessionStorage.productcode === product.id && !$scope.booking.productcode) {
+                    $scope.booking.productcode = product.id;
                 }
             }
             $scope.plans = result;
@@ -32,6 +32,7 @@ angular.module('ycBookingApp')
         }
 
         plans.$promise.then(transformResponse);
+
 
         $scope.storeSession = function () {
             $sessionStorage.booking = $scope.booking;

@@ -30,6 +30,21 @@ angular.module('ycBookingApp.rest', ['ngResource'])
                     isArray: true,
                     cache: true
                 },
+                getPlan: {
+                    url: baseUrl + '/v4/registration/get_product/:product_id',
+                    cache: true
+                },
+                createOrder: {
+                    method: 'POST',
+                    url: baseUrl + '/v4/registration/create_order',
+                    cache: false,
+
+                },
+                confirmOrder: {
+                    method: 'POST',
+                    url: baseUrl + '/v4/order/confirm_order',
+                    cache: false
+                },
                 updateProfile: {
                     url: baseUrl + '/v4/profile/update_local_profile/:provider/:user_id',
                     method: 'POST',
@@ -37,6 +52,7 @@ angular.module('ycBookingApp.rest', ['ngResource'])
                         provider: '@provider',
                         user_id: '@user_id'
                     },
+                    cache: false,
                     transformRequest: function (data, header) {
                         delete data.provider;
                         delete data.user_id;
@@ -56,8 +72,16 @@ angular.module('ycBookingApp.rest', ['ngResource'])
             };
             this.updateProfile = restfrontend.updateProfile;
             this.getBaseUrl = getBaseUrl;
+            this.confirmOrder = restfrontend.confirmOrder;
+            this.createOrder = restfrontend.createOrder;
             this.getPlans = function (productCode) {
                 return restfrontend.getPlans({
+                    'product_id': productCode,
+                    'lang': $translate.use()
+                });
+            };
+            this.getPlan = function (productCode) {
+                return restfrontend.getPlan({
                     'product_id': productCode,
                     'lang': $translate.use()
                 });
