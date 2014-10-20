@@ -31,7 +31,9 @@ angular.module('ycBookingApp')
             return result;
         }
 
-        plans.$promise.then(transformResponse);
+        plans.$promise.then(transformResponse, function(error){
+        	$timeout(function(){$scope.errorCode=["plans_not_found_error"]})
+        });
 
 
         $scope.storeSession = function () {

@@ -8,21 +8,29 @@
 <div class="container">
     <!-- Example row of columns -->
     <div class="row">
+    	<error cause="errorCode" ng-if="errorCode"></error>
         <div class="col-sm-12">
-            <div class="panel panel-success">
+            <div class="panel" ng-class="{'panel-success': !error, 'panel-danger': error}">
                 <div class="panel-heading">
                     {{'order_confirm' | translate}}
                 </div>
                 <div class="panel-body">
-                    <ul class="list-group">
                         <li class="list-group-item">{{'show_customerid' | translate}} {{customerid}}</li>
                         <li class="list-group-item">{{'show_contractid' | translate}} {{contractid}}</li>
                         <li class="list-group-item">{{'show_orderid' | translate}} {{orderid}}</li>
-                        <li class="list-group-item">
-                            {{'show_mandatorid' | translate}} <i ng-show="!mandatorid" class="fa-refresh fa fa-spin"></i> {{mandatorid}}
-
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+        	<i ng-show="!setupFinished" class="fa-refresh fa-5x fa fa-spin"></i>
+            <div class="panel panel-success" ng-show="setupFinished">
+                <div class="panel-heading">
+                    {{'show_mandatorid' | translate}}
+                </div>
+                <div class="panel-body list-group">
+                        <li class="list-group-item" ng-repeat="mid in mandatorid">
+                            {{mid}}
                         </li>
-                    </ul>
                 </div>
             </div>
         </div>

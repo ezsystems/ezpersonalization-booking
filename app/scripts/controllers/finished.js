@@ -14,13 +14,20 @@ angular.module('ycBookingApp')
         $scope.orderid = $stateParams.orderid;
 
         $scope.setupFinished = false;
+        $scope.error = false;
 
         ycRestfrontend.confirmOrder({
             orderId: $stateParams.orderid,
             contractId: $stateParams.contractid
         }).$promise.then(function (response) {
             $scope.setupFinished = true;
-            $scope.mandatorid = response;
+            $scope.error = false;
+            $scope.mandatorid = response.createdMandators;
+        }, function(error){
+        	console.log(error);
+        	$scope.setupFinished = true;
+        	$scope.errorCode = ['order_confirmation_error'];
+        	$scope.error = true;
         });
 
 

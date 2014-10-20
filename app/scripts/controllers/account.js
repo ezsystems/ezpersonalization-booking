@@ -67,7 +67,9 @@ angular.module('ycBookingApp')
                 email: $scope.account.email
             };
             $sessionStorage.account = $scope.account;
-            ycRestfrontend.updateProfile(params);
+            ycRestfrontend.updateProfile(params).$promise.catch(function(errror){
+                $timeout(function(){$scope.errorCode = ["update_account_error"];});
+            });
         };
 
 

@@ -56,8 +56,7 @@ angular.module('ycBookingApp')
                 });
             });
         }, function (errorData) {
-            alert('error initializing payment!');
-            console.log(errorData);
+        	$scope.errorCode = ["payment_init_error"]
         });
 
         $scope.isDebit = function () {
@@ -103,7 +102,6 @@ angular.module('ycBookingApp')
                 paymentData.expiryMonth = extractMonth(paymentData.validto);
                 paymentData.expiryYear = extractYear(paymentData.validto);
             }
-            console.log(paymentData);
 
             var signup = new IteroJS.Signup();
 
@@ -113,11 +111,12 @@ angular.module('ycBookingApp')
                         orderId: order.OrderId,
                         customerId: order.CustomerId,
                         productId: cartData.productcode,
-                        timeZone: billingData.timezone,
-                        websiteUrl: billingData.website
+                        timeZone: cartData.timezone,
+                        websiteUrl: cartData.website,
+                        currency: cartData.currency
                     };
-                    
-                    ycRestfrontend.createOrder(ycOrder);
+                    var ycOrderCreated = ycRestfrontend.createOrder(ycOrder).$promise;
+                    ycOrderCreated.catch(function(){$timeout(function(){$scope.errorCode = ["order_placement_error"]})});
 
                     //continue to payment
                     signup.paySignupInteractive(self.iteroJSPayment, paymentData, order, function (data) {
@@ -125,19 +124,21 @@ angular.module('ycBookingApp')
                         // Note that the callback must use $apply, otherwise angularjs won't notice we changed something:
                         $scope.$apply(function () {
                             if (!data.Url) {
-                                $scope.isSuccess = true; //done
-                                var params = {
-                                    contractid: data.ContractId,
-                                    customerid: data.CustomerId,
-                                    orderid: data.OrderId
-                                };
-                                console.log(params);
-                                $state.go('finished', params, {
-                                    location: false
-                                });
+                            	ycOrderCreated.then(function(){
+	                                $scope.isSuccess = true; //done
+	                                var params = {
+	                                    contractid: data.ContractId,
+	                                    customerid: data.CustomerId,
+	                                    orderid: data.OrderId
+	                                };
+	                                $state.go('finished', params, {
+	                                    location: false
+	                                });
+                            	})
                             } else {
-                                console.log(data);
-                                window.location = data.Url; // redirect required, e.g. paypal, skrill
+                            	ycOrderCreated.then(function(){
+                                	window.location = data.Url; // redirect required, e.g. paypal, skrill
+                            	});
                             }
                         });
                     }, function (error) {
