@@ -14,24 +14,25 @@
                 <div class="panel-heading">
                     {{'order_confirm' | translate}}
                 </div>
-                <div class="panel-body">
-                        <li class="list-group-item">{{'show_customerid' | translate}} {{customerid}}</li>
-                        <li class="list-group-item">{{'show_contractid' | translate}} {{contractid}}</li>
-                        <li class="list-group-item">{{'show_orderid' | translate}} {{orderid}}</li>
-                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">{{'show_customerid' | translate}} {{customerid}}</li>
+                    <li class="list-group-item">{{'show_contractid' | translate}} {{contractid}}</li>
+                    <li class="list-group-item">{{'show_orderid' | translate}} {{orderid}}</li>
+                </ul>
+
             </div>
         </div>
         <div class="col-sm-12">
         	<i ng-show="!setupFinished" class="fa-refresh fa-5x fa fa-spin"></i>
-            <div class="panel panel-success" ng-show="setupFinished">
+            <div class="panel panel-success" ng-show="setupFinished && !error">
                 <div class="panel-heading">
                     {{'show_mandatorid' | translate}}
                 </div>
-                <div class="panel-body list-group">
-                        <li class="list-group-item" ng-repeat="mid in mandatorid">
-                            {{mid}}
-                        </li>
-                </div>
+	                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="mid in mandatorid">
+                            {{mid.baseInformation.id}}
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
