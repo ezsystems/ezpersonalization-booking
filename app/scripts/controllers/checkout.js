@@ -73,7 +73,7 @@ angular.module('ycBookingApp')
             $scope.errorCode =[];
 
             var cart = {
-                planVariantId: ycRestfrontend.getPlan(cartData.productcode).comaId.variant,
+                planVariantId: cartData.planVariantId,
                 customFields: {
                     website: cartData.website
                 }
@@ -164,7 +164,10 @@ angular.module('ycBookingApp')
 
         $scope.checkout = function () {
             if ($scope.payment.form.$valid) {
-                checkout($scope.booking, $scope.billing, $scope.payment);
+                ycRestfrontend.getPlan($scope.booking.productcode).$promise.then(function (reponse) {
+                    $scope.booking.planVariantId = reponse.comaId.variant;
+                    checkout($scope.booking, $scope.billing, $scope.payment);
+                });
             }
         };
     

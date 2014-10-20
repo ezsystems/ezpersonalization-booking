@@ -36,7 +36,7 @@ angular.module('ycBookingApp.rest', ['ngResource'])
                 },
                 createOrder: {
                     method: 'POST',
-                    url: baseUrl + '/v4/registration/create_order',
+                    url: baseUrl + '/v4/order/create_order',
                     cache: false,
 
                 },
