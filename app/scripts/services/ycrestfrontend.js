@@ -24,31 +24,31 @@ angular.module('ycBookingApp.rest', ['ngResource'])
                         'no-realm': 'true'
                     },
                     cache: true,
-                    timeout: 5000
+                    timeout: 10000
                 },
                 getPlans: {
                     url: baseUrl + '/v4/registration/get_sister_products/:product_id',
                     isArray: true,
                     cache: true,
-                    timeout: 5000
+                    timeout: 10000
                 },
                 getPlan: {
                     url: baseUrl + '/v4/registration/get_product/:product_id',
                     cache: true,
-                    timeout: 5000
+                    timeout: 10000
                 },
                 createOrder: {
                     method: 'POST',
                     url: baseUrl + '/v4/order/create_order',
                     cache: false,
-                    timeout: 5000
+                    timeout: 10000
 
                 },
                 confirmOrder: {
                     method: 'POST',
                     url: baseUrl + '/v4/order/confirm_order',
                     cache: false,
-                    timeout: 10000
+                    timeout: 20000
                 },
                 updateProfile: {
                     url: baseUrl + '/v4/profile/update_local_profile/:provider/:user_id',
@@ -58,7 +58,7 @@ angular.module('ycBookingApp.rest', ['ngResource'])
                         user_id: '@user_id'
                     },
                     cache: false,
-                    timeout: 5000,
+                    timeout: 10000,
                     transformRequest: function (data, header) {
                         delete data.provider;
                         delete data.user_id;
