@@ -15,7 +15,7 @@ angular.module('ycBookingApp.rest', ['ngResource'])
             return baseUrl;
         }
         // Private constructor
-        function RestService($resource, $translate, $location, $window) {
+        function RestService($resource, $translate, $location, $window, $sessionStorage) {
 
             var restfrontend = $resource(baseUrl, {}, {
                 getMe: {
@@ -70,7 +70,11 @@ angular.module('ycBookingApp.rest', ['ngResource'])
             });
 
             function redirect() {
-                $window.location.href = '/login.html?returnUrl=' + $window.location; //$location.url();//'/login.html' + $location.search();
+            	var url = '/login.html?returnUrl=' + $window.location;
+            	if ($sessionStorage.product !== undefined && $sessionStorage.product !== null){
+            		url = url + '&product=' +$sessionStorage.product
+            	} 
+                $window.location.href = url; //$location.url();//'/login.html' + $location.search();
             }
 
             this.getMe = function () {
@@ -105,11 +109,11 @@ angular.module('ycBookingApp.rest', ['ngResource'])
         this.getBaseUrl = getBaseUrl;
 
         // Method for instantiating
-        this.$get = function ($resource, $translate, $location, $window) {
+        this.$get = function ($resource, $translate, $location, $window, $sessionStorage) {
             //      var myInjector = angular.injector(["ng", "ngResource", 'pascalprecht.translate']);
             //      var $translate = myInjector.get("$translate");
             //      var $resource = myInjector.get("$resource");
 
-            return new RestService($resource, $translate, $location, $window);
+            return new RestService($resource, $translate, $location, $window, $sessionStorage);
         };
     });
