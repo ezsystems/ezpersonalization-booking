@@ -21,7 +21,8 @@ angular
         'translations',
         'creditCardInput',
         'ui.validate',
-        'ui.mask'
+        'ui.mask',
+        'config'
     ])
     .run(['$rootScope', '$state', '$stateParams',
         function ($rootScope, $state, $stateParams) {

@@ -6,7 +6,7 @@
  * Controller of the ycBookingApp
  */
 angular.module('ycBookingApp')
-    .controller('CheckoutCtrl', function ($scope, $state, $timeout, $location, $sessionStorage, ycRestfrontend) {
+    .controller('CheckoutCtrl', function ($scope, $state, $timeout, $location, $sessionStorage, ycRestfrontend, ENV) {
         'use strict';
         var self = this;
     
@@ -39,7 +39,7 @@ angular.module('ycBookingApp')
 
         var paymentConfig = {
             // REQUIRED. The initial order to be displayed. This will be requested immediately upon load
-            publicApiKey: '53f1f9371d8dd00714634bf0',
+            publicApiKey: ENV.pactasApiKey,//'53f1f9371d8dd00714634bf0',
             // REQUIRED. After payment user will be redirected to this URL.
             providerReturnUrl: $state.href('paymentDone', {}, {
                 absolute: true

@@ -176,7 +176,7 @@ module.exports = function (grunt) {
                     src: '*.json',
                     dest: 'app/scripts/locale',
                     ext: '.js'
-          }]
+                }]
             }
         },
 
@@ -222,7 +222,12 @@ module.exports = function (grunt) {
             options: {
                 //
             },
-            build: {
+            test: {
+                files: {
+                    '<%= yeoman.dist %>/index.html': ['<%= yeoman.dist %>/index.html']
+                }
+            },
+            prod: {
                 files: {
                     '<%= yeoman.dist %>/index.html': ['<%= yeoman.dist %>/index.html']
                 }
@@ -232,6 +237,38 @@ module.exports = function (grunt) {
         // Reads HTML for usemin blocks to enable smart builds that automatically
         // concat, minify and revision files. Creates configurations in memory so
         // additional tasks can operate on them
+
+        ngconstant: {
+            // Options for all targets
+            options: {
+                space: '  ',
+                wrap: '"use strict";\n\n {%= __ngModule %}',
+                name: 'config',
+            },
+            // Environment targets
+            development: {
+                options: {
+                    dest: '<%= yeoman.app %>/scripts/config/config.js'
+                },
+                constants: {
+                    ENV: {
+                        name: 'dev',
+                        pactasApiKey: '53f1f9371d8dd00714634bf0'
+                    }
+                }
+            },
+            production: {
+                options: {
+                    dest: '<%= yeoman.app %>/scripts/config/config.js'
+                },
+                constants: {
+                    ENV: {
+                        name: 'prod',
+                        pactasApiKey: ''
+                    }
+                }
+            }
+        },
 
 
         useminPrepare: {
@@ -464,6 +501,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
     'clean:dist',
+    'ngconstant:development',
     'jsonAngularTranslate:translate',
     'wiredep',
     'useminPrepare',
@@ -477,7 +515,27 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'processhtml',
+    'processhtml:test',
+    'htmlmin'
+  ]);
+
+grunt.registerTask('dist', [
+    'clean:dist',
+    'ngconstant:production',
+    'jsonAngularTranslate:translate',
+    'wiredep',
+    'useminPrepare',
+    'concurrent:dist',
+    'autoprefixer',
+    'concat',
+    'ngAnnotate',
+    'copy:dist',
+    'cdnify',
+    'cssmin',
+    'uglify',
+    'filerev',
+    'usemin',
+    'processhtml:prod',
     'htmlmin'
   ]);
 
