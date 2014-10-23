@@ -71,10 +71,10 @@ angular.module('ycBookingApp.rest', ['ngResource'])
 
             function redirect() {
             	var url = '/login.html?returnUrl=' + $window.location;
-            	if ($sessionStorage.product !== undefined && $sessionStorage.product !== null){
-            		url = url + '&product=' +$sessionStorage.product
+            	if ($sessionStorage.productcode !== undefined && $sessionStorage.productcode !== null){
+            		url = url + '&product=' +$sessionStorage.productcode
             	} 
-                $window.location.href = url; //$location.url();//'/login.html' + $location.search();
+                $window.location.href = url +'&lang='+$translate.use(); //$location.url();//'/login.html' + $location.search();
             }
 
             this.getMe = function () {
