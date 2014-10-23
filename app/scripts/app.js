@@ -88,7 +88,7 @@ angular
                             if ($sessionStorage.country !== undefined && $sessionStorage.country !== null) {
                                 return $sessionStorage.country;
                             }
-                            return $http.jsonp('http://ipinfo.io/?callback=JSON_CALLBACK', {timeout: 900})
+                            return $http.jsonp('/geoip?callback=JSON_CALLBACK', {timeout: 900})
                                 .then(function(data) {
                                     $sessionStorage.country = data.data.country;
                                     return data.data.country;
