@@ -70,6 +70,13 @@ module.exports = function (grunt) {
             }
         },
 
+        removelogging: {
+    		dist: {
+      			src: ".tmp/concat/scripts/**/scripts*.js", // Each file will be overwritten with the output!
+      			verbose: true
+    		}
+  		},
+
         // The actual grunt server settings
         connect: {
             options: {
@@ -529,6 +536,7 @@ grunt.registerTask('dist', [
     'concurrent:dist',
     'autoprefixer',
     'concat',
+    'removelogging',
     'ngAnnotate',
     'copy:dist',
     'cdnify',
