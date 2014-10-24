@@ -33,7 +33,6 @@ angular.module('ycBookingApp')
 
 
                 if (form === undefined || !form.$valid || !$scope[tab.id].valid) {
-                    console.log(tab.id, form === undefined, !form.$valid, !$scope[tab.id].valid) 
                     return false;
                 }
             }
@@ -47,7 +46,6 @@ angular.module('ycBookingApp')
                     $scope[fromState.name].valid = $scope[fromState.name].form.$valid;
                 }
                 if (!isEnabled(toState.name)) {
-                    console.log(toState.name, "is disabled");
                     $scope.$broadcast('show-errors-check-validity');
                     event.preventDefault();
                 }
