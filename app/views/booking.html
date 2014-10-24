@@ -19,6 +19,11 @@
             </div>
 
         </div>
+        <div class="row" ng-if="booking.productcode">
+        	<div class="col-sm-12" >
+        		<div ng-include="getIframeUrl()"></div>
+        	</div>
+        </div>
         <div class="row">
             <error cause="errorCode" ng-if="errorCode"></error>
             <div class="clearfix"></div>

@@ -39,4 +39,8 @@ angular.module('ycBookingApp')
         $scope.storeSession = function () {
             $sessionStorage.booking = $scope.booking;
         }
+
+        $scope.getIframeUrl = function() {
+        	return '/product-iframe/' +$translate.use() +'/' + $scope.booking.productcode;
+        }
     });
