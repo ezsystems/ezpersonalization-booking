@@ -260,6 +260,7 @@ module.exports = function (grunt) {
                 constants: {
                     ENV: {
                         name: 'dev',
+                        pricingBaseUrl: 'https://www.yoochoose.com',
                         pactasApiKey: '53f1f9371d8dd00714634bf0'
                     }
                 }
@@ -271,6 +272,7 @@ module.exports = function (grunt) {
                 constants: {
                     ENV: {
                         name: 'prod',
+                        pricingBaseUrl: 'https://www.yoochoose.com',
                         pactasApiKey: ''
                     }
                 }

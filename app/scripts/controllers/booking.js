@@ -6,7 +6,7 @@
  * Controller of the ycBookingApp
  */
 angular.module('ycBookingApp')
-    .controller('BookingCtrl', function ($scope, $sessionStorage, ycRestfrontend, $translate) {
+    .controller('BookingCtrl', function ($scope, $sessionStorage, ycRestfrontend, $translate, ENV, $sce) {
         'use strict';
         //var plans = $resource('assets/plans.json',{},{});
         var plans = ycRestfrontend.getPlans($sessionStorage.productcode);
@@ -41,6 +41,7 @@ angular.module('ycBookingApp')
         }
 
         $scope.getIframeUrl = function() {
-        	return '/product-iframe/' +$translate.use() +'/' + $scope.booking.productcode;
+        	var url = ENV.pricingBaseUrl + '/product-iframe/' +$translate.use() +'/' + $scope.booking.productcode;
+        	return $sce.trustAsResourceUrl(url)
         }
     });

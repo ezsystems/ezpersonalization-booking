@@ -81,7 +81,8 @@
   "currency": "Currency",
   "language": "Language",
   "month": "Month",
-  "year": "Year"
+  "year": "Year",
+  "price_model": "Pricing"
 
  
 

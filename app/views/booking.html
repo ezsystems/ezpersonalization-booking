@@ -22,9 +22,9 @@
         <div class="row" ng-if="booking.productcode">
         	<div class="col-sm-12" >
 				<div class="panel panel-default panel">
-					<div class="panel-heading" translate="price_modell"></div>
+					<div class="panel-heading" translate="price_model"></div>
 						<div class="panel-body">
-							<iframe width="100%" height="220em" frameborder="0" src="{{getIframeUrl()}}" ng-if="booking.productcode"></iframe>
+							<iframe width="100%" height="220em" frameborder="0" ng-src="{{getIframeUrl()}}" ng-if="booking.productcode"></iframe>
 						</div>
 					</div>
         	</div>
