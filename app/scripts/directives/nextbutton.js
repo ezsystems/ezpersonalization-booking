@@ -13,7 +13,7 @@ angular.module('ycBookingApp')
                 callback: '='
                 
             },
-            template: '<button class="btn btn-default pull-right" ng-click="proceed()" type="submit">{{\'continue\' | translate}} <i class="fa fa-forward"></i></button>',
+            template: '<button class="btn btn-default pull-right" ng-click="proceed()" type="submit">{{\'continue\' | translate}} »</button>',
             replace: true,
             controller: function ($scope, $state, tab) {
                 function proceed() {
