@@ -273,7 +273,7 @@ module.exports = function (grunt) {
                     ENV: {
                         name: 'prod',
                         pricingBaseUrl: 'https://www.yoochoose.com',
-                        pactasApiKey: ''
+                        pactasApiKey: '544e435f7965061108dba2aa'
                     }
                 }
             }
