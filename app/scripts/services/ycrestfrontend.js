@@ -57,6 +57,12 @@ angular.module('ycBookingApp.rest', ['ngResource'])
                     cache: false,
                     timeout: 20000
                 },
+                updateLang: {
+                    method: 'POST',
+                    url: baseUrl + '/v4/profile/update_lang',
+                    cache: false,
+                    timeout: 20000
+                },
                 updateProfile: {
                     url: baseUrl + '/v4/profile/update_local_profile/:provider/:user_id',
                     method: 'POST',
@@ -92,6 +98,9 @@ angular.module('ycBookingApp.rest', ['ngResource'])
             this.confirmOrder = restfrontend.confirmOrder;
             this.createOrder = restfrontend.createOrder;
             this.changePassword = restfrontend.changePassword;
+            this.updateLang = function(lang) {
+            	restfrontend.updateLang({'lang': lang});
+            }
             this.getPlans = function (productCode) {
                 return restfrontend.getPlans({
                     'product_id': productCode,

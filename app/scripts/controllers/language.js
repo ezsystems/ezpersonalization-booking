@@ -6,7 +6,7 @@
  * Controller of the ycBookingApp
  */
 angular.module('ycBookingApp')
-    .controller('LanguageCtrl', function ($scope, $translate) {
+    .controller('LanguageCtrl', function ($scope, $translate, ycRestfrontend) {
         'use strict';
         $scope.languages = [{
             code: 'en',
@@ -18,6 +18,7 @@ angular.module('ycBookingApp')
         $scope.changeLanguage = function (langKey) {
             $translate.use(langKey);
             $scope.account.lang = langKey;
+			ycRestfrontend.updateLang(langKey);
         };
 
     });
