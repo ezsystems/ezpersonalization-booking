@@ -21,7 +21,8 @@ angular.module('ycBookingApp.rest', ['ngResource'])
                 getMe: {
                     url: baseUrl + '/v4/profile/get_me',
                     params: {
-                        'no-realm': 'true'
+                        'no-realm': 'true',
+                        'withAuthenticationInformation': 'true'
                     },
                     cache: true,
                     timeout: 10000
@@ -47,6 +48,12 @@ angular.module('ycBookingApp.rest', ['ngResource'])
                 confirmOrder: {
                     method: 'POST',
                     url: baseUrl + '/v4/order/confirm_order',
+                    cache: false,
+                    timeout: 20000
+                },
+                changePassword: {
+                    method: 'POST',
+                    url: baseUrl + '/v4/profile/change_password',
                     cache: false,
                     timeout: 20000
                 },
@@ -84,6 +91,7 @@ angular.module('ycBookingApp.rest', ['ngResource'])
             this.getBaseUrl = getBaseUrl;
             this.confirmOrder = restfrontend.confirmOrder;
             this.createOrder = restfrontend.createOrder;
+            this.changePassword = restfrontend.changePassword;
             this.getPlans = function (productCode) {
                 return restfrontend.getPlans({
                     'product_id': productCode,

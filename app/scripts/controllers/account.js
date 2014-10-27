@@ -49,8 +49,8 @@ angular.module('ycBookingApp')
                     }
 
                 }
-                if (!$scope.passwordNeeded) {
-                    $scope.passwordNeeded = result.passwordNeeded;
+                if ($scope.passwordNeeded === undefined || $scope.passwordNeeded === null) {
+                    $scope.passwordNeeded = result.authenticationInformation.temporary;
                 }
                 $scope.ready = true;
 
@@ -70,6 +70,23 @@ angular.module('ycBookingApp')
             ycRestfrontend.updateProfile(params).$promise.catch(function(errror){
                 $timeout(function(){$scope.errorCode = ["update_account_error"];});
             });
+        };
+
+        $scope.changePassword = function () {
+            var params = {
+                newPassword : $scope.account.password,
+                
+            };
+            ycRestfrontend.changePassword(params).$promise.catch(function(errror){
+                $timeout(function(){$scope.errorCode = ["change_password_error"];});
+            });
+        };
+
+        $scope.submit = function () {
+            $scope.updateProfile();
+            if ($scope.passwordNeeded) {
+            	$scope.changePassword();
+            }
         };
 
 
