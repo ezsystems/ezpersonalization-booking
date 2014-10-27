@@ -234,7 +234,7 @@ module.exports = function (grunt) {
                     '<%= yeoman.dist %>/index.html': ['<%= yeoman.dist %>/index.html']
                 }
             },
-            prod: {
+            dist: {
                 files: {
                     '<%= yeoman.dist %>/index.html': ['<%= yeoman.dist %>/index.html']
                 }
@@ -546,7 +546,7 @@ grunt.registerTask('dist', [
     'uglify',
     'filerev',
     'usemin',
-    'processhtml:prod',
+    'processhtml:dist',
     'htmlmin'
   ]);
 
