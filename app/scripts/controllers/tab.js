@@ -29,10 +29,8 @@ angular.module('ycBookingApp')
                 if (tab.id === id) {
                     break;
                 }
-                var form = $scope[tab.id].form;
 
-
-                if (form === undefined || !form.$valid || !$scope[tab.id].valid) {
+                if (!$scope[tab.id].valid) {
                     return false;
                 }
             }
