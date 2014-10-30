@@ -38,9 +38,14 @@ angular
                 .registerAvailableLanguageKeys(['en', 'de'], {
                     'en_US': 'en',
                     'en_UK': 'en',
+                    'en-US': 'en',
+                    'en-UK': 'en',
                     'de_DE': 'de',
                     'de_CH': 'de',
-                    'de_AT': 'de'
+                    'de_AT': 'de',
+                    'de-DE': 'de',
+                    'de-CH': 'de',
+                    'de-AT': 'de'
                 })
                 .determinePreferredLanguage();
             $translateProvider.fallbackLanguage('en');
