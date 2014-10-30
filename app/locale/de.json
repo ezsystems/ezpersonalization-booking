@@ -25,6 +25,7 @@
   "phone_number": "Telefon",
   "product_select": "Produkt",
   "website": "Webseite",
+  "website_placeholder": "http://www.meine-beispiel-firma.de",
   "finished_header": "Das war's",
   "finished_header_small": "Sie haben sich für den Yoochoose Recommendation Service registriert!",
   "order_confirm": "Ihre Bestelldaten",
