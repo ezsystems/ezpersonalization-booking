@@ -18,43 +18,36 @@ angular.module('ycBookingApp')
         //      ycrestfronten.redirectToLogin();
         //  } else {
         loginData.$promise.then(function (result) {
-            $timeout(function () {
+            if (!$scope.account.email) {
+                $scope.account.email = result.localProfile.email;
+            }
+            if (!$scope.account.firstname) {
+                $scope.account.firstname = result.localProfile.firstName;
+            }
+            if (!$scope.account.lastname) {
+                $scope.account.lastname = result.localProfile.lastName;
+            }
+            if (!$scope.account.lang && result.localProfile.lang !== undefined && result.localProfile.lang !== null) {
+                $scope.account.lang = result.localProfile.lang;
+                $translate.use($scope.account.lang);
+            } else if (!$scope.account.lang){
+                $scope.account.lang == $translate.use();
+            }
+            if (!$scope.account.timezone) {
+                $scope.account.timezone = result.localProfile.timeZone;
+            }
+            $scope.account.provider = result.provider;
+            $scope.account.foreignId = result.id;
+            if ((result.provider === undefined || result.provider === null || !result.provider) && (result.localProfile.email === undefined || result.localProfile.email === null || !result.localProfile.email)) {
                 if (!$scope.account.email) {
-                    $scope.account.email = result.localProfile.email;
+                    $scope.account.email = result.id;
                 }
-                if (!$scope.account.firstname) {
-                    $scope.account.firstname = result.localProfile.firstName;
-                }
-                if (!$scope.account.lastname) {
-                    $scope.account.lastname = result.localProfile.lastName;
-                }
-                if (!$scope.account.lang && result.localProfile.lang !== undefined && result.localProfile.lang !== null) {
-                    $scope.account.lang = result.localProfile.lang;
-                    $translate.use($scope.account.lang);
-                } else if (!$scope.account.lang){
-                    $scope.account.lang == $translate.use();
-                }
-                if (!$scope.account.timezone) {
-                    $scope.account.timezone = result.localProfile.timeZone;
-                }
-                if (!$scope.account.provider) {
-                    $scope.account.provider = result.provider;
-                }
-                if (!$scope.account.foreignId) {
-                    $scope.account.foreignId = result.id;
-                }
-                if ((result.provider === undefined || result.provider === null || !result.provider) && (result.localProfile.email === undefined || result.localProfile.email === null || !result.localProfile.email)) {
-                    if (!$scope.account.email) {
-                        $scope.account.email = result.id;
-                    }
 
-                }
-                if ($scope.passwordNeeded === undefined || $scope.passwordNeeded === null) {
-                    $scope.passwordNeeded = result.authenticationInformation.temporary;
-                }
-                $scope.ready = true;
-
-            });
+            }
+            if ($scope.passwordNeeded === undefined || $scope.passwordNeeded === null) {
+                $scope.passwordNeeded = result.authenticationInformation.temporary;
+            }
+            $scope.ready = true;
         });
         $scope.updateProfile = function () {
             var params = {
@@ -88,6 +81,10 @@ angular.module('ycBookingApp')
             	$scope.changePassword();
             }
         };
+
+        $scope.isNativeLogin = function(){
+        	return $scope.account.provider === undefined || $scope.account.provider === null;
+        }
 
 
 
