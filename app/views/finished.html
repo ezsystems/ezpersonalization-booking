@@ -28,14 +28,32 @@
                 <div class="panel-heading">
                     {{'show_mandatorid' | translate}}
                 </div>
-	                <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="mid in mandatorid">
-                            {{mid.baseInformation.id}}
-                    </li>
-                </ul>
+                <div class="panel-body" translate="mandator_explained">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th translate="mandatorid"></th>
+                                <th translate="license_key"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="mid in mandatorid">
+                                <td>
+                                    {{mid.baseInformation.id}}
+                                </td>
+                                <td>
+                                    {{mid.registrationData.licenseKey}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col-sm-6">
             <h2>{{'docs_header' | translate}}</h2>
