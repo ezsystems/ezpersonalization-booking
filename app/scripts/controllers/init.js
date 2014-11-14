@@ -29,6 +29,6 @@ angular.module('ycBookingApp')
         }
         $location.url('/');
         $state.go($scope.tabs[0].id, {}, {
-            location: false
+            location: true
         });
     });
