@@ -132,7 +132,7 @@ angular.module('ycBookingApp')
 	                                    orderid: data.OrderId
 	                                };
 	                                $state.go('finished', params, {
-	                                    location: false
+	                                    location: true
 	                                });
                             	})
                             } else {

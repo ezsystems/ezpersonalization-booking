@@ -122,11 +122,11 @@ angular
                                 orderid: data.OrderId
                             };
                             $state.go('finished', params, {
-                                location: false
+                                location: true
                             });
                         }, function (error) {
                             $state.go('error', error, {
-                                location: false
+                                location: true
                             });
                         });
                     },
