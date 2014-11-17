@@ -8,11 +8,10 @@
 <div class="container">
     <!-- Example row of columns -->
     <div class="row">
-    	<error cause="errorCode" ng-if="errorCode"></error>
+    	<error cause="errorCode" ng-if="errorCode" variables="errorVariables"></error>
 
         <div class="col-sm-12">
-        	<i ng-show="!setupFinished" class="fa-refresh fa-5x fa fa-spin"></i>
-            <div class="panel panel-success" ng-show="setupFinished && !error">
+            <div class="panel panel-success" ng-hide="error">
                 <div class="panel-heading">
                     {{'show_mandatorid' | translate}}
                 </div>
@@ -27,6 +26,10 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <tr ng-show="!setupFinished">
+                                <td><i class="fa-refresh fa fa-spin"></i></td>
+                                <td><i class="fa-refresh fa fa-spin"></i></td>
+                            </tr>
                             <tr ng-repeat="mid in mandatorid">
                                 <td>
                                     {{mid.baseInformation.id}}

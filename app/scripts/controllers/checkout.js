@@ -170,7 +170,7 @@ angular.module('ycBookingApp')
                 ycRestfrontend.getPlan($scope.booking.productcode).$promise.then(function (reponse) {
                     $scope.booking.planVariantId = reponse.comaId.variant;
                     checkout($scope.booking, $scope.billing, $scope.payment);
-                }).then(function (response) {$scope.checkoutInProgress = false;} );
+                });
             }
         };
     
