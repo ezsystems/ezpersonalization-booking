@@ -32,7 +32,7 @@
   "show_customerid": "Ihre Kundennummer:",
   "show_contractid": "Ihre Vertragsnummer:",
   "show_orderid": "Ihre Bestellnummer:",
-  "show_mandatorid": "Ihre Mandatennummer:",
+  "show_mandatorid": "Ihre Zugangsdaten",
   "docs_header": "Lernen",
   "docs_teaser": "Wie funktioniert der Recommendation service? was sind Modelle oder Scenarien? Wie funktionieren A/B Tests? Finden Sie es heraus!",
   "docs_button": "Dokumentation",
@@ -83,7 +83,10 @@
   "language": "Sprache",
   "month": "Monat",
   "year": "Jahr",
-  "price_model": "Preise"
+  "price_model": "Preise",
+  "mandator_explained": "Mandantennummer und Lizenzschlüssel werden benötigt um unseren service zu nutzen. Falls sie ein Shop-Plugin nutzen, müssen Sie Mandantennummer und Lizenzschlüssel in der Plugin-Konfiguration eintragen um das Plugin zu aktivieren. Andernfalls finden Sie weitere Informationen in der <a class=\"btn btn-default btn-xs\" href=\"https://doc.yoochoose.net/\">Dokumentation</a>.",
+  "mandatorid": "Mandantennummer",
+  "license_key": "Lizenzschlüssel"
 
 
 

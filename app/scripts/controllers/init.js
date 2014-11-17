@@ -19,8 +19,16 @@ angular.module('ycBookingApp')
             $window.location.href = $location.url();
 
         }
+        if (window._paq){
+            window._paq.push(['setCustomVariable',
+                1,
+                "product",
+                $sessionStorage.productcode,
+                "visit"
+            ]);
+        }
         $location.url('/');
         $state.go($scope.tabs[0].id, {}, {
-            location: false
+            location: true
         });
     });

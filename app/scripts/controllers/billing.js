@@ -12,6 +12,16 @@ angular.module('ycBookingApp')
         if (!$scope.billing.country){
             $scope.billing.country = location;
         }
+
+        if (!$scope.billing.email) {
+            $scope.billing.email = $scope.account.email;
+        }
+        if (!$scope.billing.firstname) {
+            $scope.billing.firstname = $scope.account.firstname;
+        }
+        if (!$scope.billing.lastname) {
+            $scope.billing.lastname = $scope.account.lastname;
+        }
     
         $scope.storeSession = function () {
             $sessionStorage.billing = $scope.billing;

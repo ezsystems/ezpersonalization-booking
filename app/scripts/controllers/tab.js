@@ -49,6 +49,15 @@ angular.module('ycBookingApp')
                 }
             });
 
+        $rootScope.$on('$stateChangeSuccess',
+            function (event, toState, toParams, fromState, fromParams) {
+                if (window._paq){
+                    window._paq.push(['setDocumentTitle', toState.name]);
+                    window._paq.push(["trackPageView"]);
+                }
+
+            });
+
 
         $scope.tabs = tab.tabs;
 
@@ -112,7 +121,7 @@ angular.module('ycBookingApp')
 
         function go(id) {
             $state.go(id, {}, {
-                location: false
+                location: true
             });
         }
         $scope.go = go;
