@@ -8,7 +8,41 @@
 <div class="container">
     <!-- Example row of columns -->
     <div class="row">
-    	<error cause="errorCode" ng-if="errorCode"></error>
+    	<error cause="errorCode" ng-if="errorCode" variables="errorVariables"></error>
+
+        <div class="col-sm-12">
+            <div class="panel panel-success" ng-hide="error">
+                <div class="panel-heading">
+                    {{'show_mandatorid' | translate}}
+                </div>
+                <div class="panel-body" translate="mandator_explained">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th translate="mandatorid"></th>
+                                <th translate="license_key"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-show="!setupFinished">
+                                <td><i class="fa-refresh fa fa-spin"></i></td>
+                                <td><i class="fa-refresh fa fa-spin"></i></td>
+                            </tr>
+                            <tr ng-repeat="mid in mandatorid">
+                                <td>
+                                    {{mid.baseInformation.id}}
+                                </td>
+                                <td>
+                                    {{mid.registrationData.licenseKey}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
         <div class="col-sm-12">
             <div class="panel" ng-class="{'panel-success': !error, 'panel-danger': error}">
                 <div class="panel-heading">
@@ -22,20 +56,8 @@
 
             </div>
         </div>
-        <div class="col-sm-12">
-        	<i ng-show="!setupFinished" class="fa-refresh fa-5x fa fa-spin"></i>
-            <div class="panel panel-success" ng-show="setupFinished && !error">
-                <div class="panel-heading">
-                    {{'show_mandatorid' | translate}}
-                </div>
-	                <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="mid in mandatorid">
-                            {{mid.baseInformation.id}}
-                    </li>
-                </ul>
-            </div>
-        </div>
     </div>
+
     <div class="row">
         <div class="col-sm-6">
             <h2>{{'docs_header' | translate}}</h2>

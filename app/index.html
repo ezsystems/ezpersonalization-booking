@@ -50,7 +50,7 @@
                 <ul class="nav navbar-nav" ng-hide="$state.current.name=='finished'">
                     <li ng-repeat="tab in tabs" active="tab.active" ui-sref-active="active">
                         <!--<a ui-sref="{{tab.id}}" >-->
-                        <a ui-sref="{{tab.id}}" ng-click="go(tab.id)">
+                        <a ui-sref="{{tab.id}}">
                             <i class="fa fa-{{tab.icon}}"></i> {{tab.id+'_title' | translate}}
                         </a>
                     </li>
@@ -135,6 +135,23 @@
         document.write('<script src="' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':35729/livereload.js?snipver=1" type="text/javascript"><\/script>')
     </script>
     <!-- endbuild -->
+
+	<!-- Piwik -->
+	<script type="text/javascript">
+	  var _paq = _paq || [];
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+	    var u="https://www.yoochoose.com/piwik/";
+	    _paq.push(['setTrackerUrl', u+'piwik.php']);
+	    _paq.push(['setSiteId', 10]);
+	    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+	    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+	  })();
+	</script>
+	<noscript><p><img src="//www.yoochoose.com/piwik/piwik.php?idsite=10" style="border:0;" alt="" /></p></noscript>
+	<!-- End Piwik Code -->
+
 </body>
 
 </html>

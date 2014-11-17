@@ -11,7 +11,7 @@ angular.module('ycBookingApp')
         var self = this;
     
 
-
+        $scope.checkoutInProgress = false;
         $scope.opendatepicker = false;
 
         $scope.ready = false;
@@ -70,6 +70,7 @@ angular.module('ycBookingApp')
 
         function checkout(cartData, billingData, paymentData) {
             $scope.errorCode =[];
+            $scope.checkoutInProgress = true
 
             var cart = {
                 planVariantId: cartData.planVariantId,
@@ -132,7 +133,7 @@ angular.module('ycBookingApp')
 	                                    orderid: data.OrderId
 	                                };
 	                                $state.go('finished', params, {
-	                                    location: false
+	                                    location: true
 	                                });
                             	})
                             } else {
@@ -165,6 +166,7 @@ angular.module('ycBookingApp')
 
         $scope.checkout = function () {
             if ($scope.payment.form.$valid) {
+                $scope.checkoutInProgress = true;
                 ycRestfrontend.getPlan($scope.booking.productcode).$promise.then(function (reponse) {
                     $scope.booking.planVariantId = reponse.comaId.variant;
                     checkout($scope.booking, $scope.billing, $scope.payment);

@@ -25,6 +25,12 @@ angular.module('ycBookingApp')
             $scope.mandatorid = response.createdMandators;
         }, function(error){
         	console.log(error);
+            $scope.errorVariables = {
+                'orderid': $scope.orderid,
+                'customerid': $scope.customerid,
+                'contractid': $scope.contractid
+            };
+
         	$scope.setupFinished = true;
         	$scope.errorCode = ['order_confirmation_error'];
         	$scope.error = true;

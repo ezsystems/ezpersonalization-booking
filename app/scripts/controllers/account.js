@@ -47,6 +47,14 @@ angular.module('ycBookingApp')
             if ($scope.passwordNeeded === undefined || $scope.passwordNeeded === null) {
                 $scope.passwordNeeded = result.authenticationInformation.temporary;
             }
+            if (window._paq){
+	            window._paq.push(['setCustomVariable',
+	                2,
+	                "loginprovider",
+	                result.provider,
+	                "visit"
+	            ]);
+        	}
             $scope.ready = true;
         });
         $scope.updateProfile = function () {

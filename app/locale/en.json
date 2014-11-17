@@ -32,7 +32,7 @@
   "show_customerid": "Your customer id:",
   "show_contractid": "Your contract id:",
   "show_orderid": "Your order id:",
-  "show_mandatorid": "Your mandator id:",
+  "show_mandatorid": "Your access information",
   "docs_header": "Learn",
   "docs_teaser": "How does the recommendation service work? What are Models and Scenarios? And how can I use A/B Tests? Find out!",
   "docs_button": "Documentation",
@@ -83,7 +83,11 @@
   "language": "Language",
   "month": "Month",
   "year": "Year",
-  "price_model": "Pricing"
+  "price_model": "Pricing",
+  "mandator_explained": "Mandator id and license key are needed to use our service. If you are using a shop plugin, please enter them in the plugin configuration in order to activate the plugin. Otherwise you will find more detailed information in the <a class=\"btn btn-default btn-xs\" href=\"https://doc.yoochoose.net/\">documentation</a>.",
+  "mandatorid": "Mandator id",
+  "license_key": "License key",
+  "order_confirmation_error": "Your order could not be confirmed. Please contact <a class=\"btn btn-danger btn-xs\" href=\"mailto:support@yoochoose.com?subject=order%20confirmation%20error&body=order%20{{orderid}}%0Acustomer%20{{customerid}}%0Acontract%20{{contractid}}\">support@yoochoose.com</a> with reference to the order data displayed below."
 
  
 
