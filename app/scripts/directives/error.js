@@ -9,10 +9,11 @@
 angular.module('ycBookingApp')
     .directive('error', function () {
         return {
-            template: '<div class="col-sm-12" ng-repeat="error in cause"><div class="alert alert-danger" translate="{{error}}"></div></div>',
+            template: '<div class="col-sm-12" ng-repeat="error in cause"><div class="alert alert-danger" translate="{{error}}" translate-values="{{variables}}"></div></div>',
             restrict: 'E',
             scope: {
-                cause: '='
+                cause: '=',
+                variables: '='
             },
 
             controller: function ($scope, $stateParams) {
