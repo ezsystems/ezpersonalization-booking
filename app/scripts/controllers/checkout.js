@@ -6,7 +6,7 @@
  * Controller of the ycBookingApp
  */
 angular.module('ycBookingApp')
-    .controller('CheckoutCtrl', function ($scope, $state, $timeout, $location, $sessionStorage, ycRestfrontend, ENV) {
+    .controller('CheckoutCtrl', function ($scope, $state, $timeout, $location, $sessionStorage, ycRestfrontend, ENV, $translate) {
         'use strict';
         var self = this;
     
@@ -90,14 +90,15 @@ angular.module('ycBookingApp')
                     phone: billingData.phone
                 },
                 address: {
-                    'addressLine1': billingData.company,
-                    'addressLine2': billingData.addressline2,
+                    'addressLine1': billingData.addressline,
                     'street': billingData.street,
                     'houseNumber': billingData.number,
                     'postalCode': billingData.postalcode,
                     'city': billingData.city,
                     'country': billingData.country
-                }
+                },
+                locale: $translate.use(),
+                Language: $translate.use(),
             };
             if (paymentData.validto !== undefined) {
                 paymentData.expiryMonth = extractMonth(paymentData.validto);
