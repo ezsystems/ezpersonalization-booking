@@ -3,13 +3,6 @@
     </div>
     <form role="form" class="form" name="account.form" ng-show="ready">
         <div class="row">
-            <div class="form-group col-sm-6 col-md-6">
-                <p class="form-control-static">
-                    <i class="fa fa-{{account.provider || 'envelope'}}-square "></i>  <small>{{account.foreignId}}</small>
-                </p>
-            </div>
-        </div>
-        <div class="row">
             <div class="form-group col-sm-12 col-md-4" show-errors>
                 <label class="control-label" for="email" translate="email"></label>
                 <input type="email" ng-required="isNativeLogin()" ng-disabled="isNativeLogin()" placeholder="{{'email' | translate}}" class="form-control" id="email" name="email" ng-model="account.email" />
