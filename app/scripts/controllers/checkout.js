@@ -145,7 +145,10 @@ angular.module('ycBookingApp')
                         });
                     }, function (error) {
                         $scope.$apply(function () {
+                            console.log(error);
                             $scope.errorCode = error['errorCode'];
+                            $scope.errorMessage = error['errorMessage'];
+                            $scope.errorDetails = error['details'];
                             for (var i in $scope.errorCode) {
                                 if ($scope.errorCode[i] === "") {
                                     $scope.errorCode[i] = "UnmappedError";
@@ -157,7 +160,10 @@ angular.module('ycBookingApp')
                 },
                 function (error) {
                     $scope.$apply(function () {
+                        console.log(error);
                         $scope.errorCode = error['errorCode'];
+                        $scope.errorMessage = error['errorMessage'];
+                        $scope.errorDetails = error['details'];
                         if ($scope.errorCode[i] === "") {
                             $scope.errorCode[i] = "UnmappedError";
                         }
