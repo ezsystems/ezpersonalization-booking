@@ -104,7 +104,8 @@ angular.module('ycBookingApp')
                 paymentData.expiryMonth = extractMonth(paymentData.validto);
                 paymentData.expiryYear = extractYear(paymentData.validto);
             }
-
+            paymentData.emailAddress = customerData.emailAddress;
+            
             var signup = new IteroJS.Signup();
 
             signup.createOrder(cart, customerData, function (order) {
@@ -120,9 +121,7 @@ angular.module('ycBookingApp')
                     var ycOrderCreated = ycRestfrontend.createOrder(ycOrder).$promise;
                     ycOrderCreated.catch(function(){$timeout(function(){$scope.errorCode = ["order_placement_error"]})});
 
-                    if (paymentData.selectedPaymentMethod === "BlackLabel:PayPal") {
-                        payment.bearer.emailAddress = customerData.emailAddress;
-                    }
+
 
                     //continue to payment
                     signup.paySignupInteractive(self.iteroJSPayment, paymentData, order, function (data) {
