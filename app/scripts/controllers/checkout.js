@@ -20,6 +20,20 @@ angular.module('ycBookingApp')
         $scope.payment = {
             bearer: ''
         };
+        if ($sessionStorage.payment && $sessionStorage.payment.emailAddress) {
+            $scope.payment.emailAddress = $sessionStorage.payment.emailAddress;
+        } else {
+            $scope.payment.emailAddress = $scope.billing.email
+        }
+
+        
+        $scope.storeSession = function () {
+            $sessionStorage.payment = {
+                "emailAddress": $scope.payment.emailAddress
+            };
+        };
+
+
         $scope.pickdate = function ($event) {
             $event.preventDefault();
             $event.stopPropagation();
@@ -67,6 +81,12 @@ angular.module('ycBookingApp')
             return $scope.payment.bearer === 'CreditCard:Paymill' || $scope.payment.bearer === 'CreditCard:FakePSP';
         };
 
+        $scope.needsEmail = function () {
+            return $scope.payment.bearer === 'Paypal' || (!$scope.isDebit() && !$scope.isCreditCard());
+        };
+
+        
+
 
         function checkout(cartData, billingData, paymentData) {
             $scope.errorCode =[];
@@ -104,7 +124,7 @@ angular.module('ycBookingApp')
                 paymentData.expiryMonth = extractMonth(paymentData.validto);
                 paymentData.expiryYear = extractYear(paymentData.validto);
             }
-            paymentData.emailAddress = customerData.emailAddress;
+            //paymentData.emailAddress = customerData.emailAddress;
             
             var signup = new IteroJS.Signup();
 
