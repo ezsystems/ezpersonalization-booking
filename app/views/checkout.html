@@ -44,7 +44,12 @@
                     <input class="form-control" placeholder="MM/YY" ng-required="isCreditCard()" type="text" name="validto" ng-model="payment.validto" ui-mask="99/99" ui-validate="'validateExpiry($value)'"></input>
 
                 </div>
-                
+            </div>
+            <div class="payment-mail" data-ng-if="needsEmail()">
+                <div class="form-group col-sm-12" show-errors>
+                    <label for="email" class="control-label" translate="email"></label>
+                    <input ng-model="payment.emailAddress" ng-required="needsEmail()" type="email" ng-change="storeSession()" class="form-control" id="emailAddress" name="emailAddress" placeholder="{{'email' | translate}}" />
+                </div>
             </div>
             <div class="form-group" show-errors>
                 <div class="checkbox col-xs-12">
