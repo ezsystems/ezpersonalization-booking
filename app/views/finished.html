@@ -1,0 +1,79 @@
+<div class="jumbotron" style="margin-top: -20px;">
+    <div class="container">
+        <h1>{{'finished_header' |translate}}</h1>
+        <p>{{'finished_header_small' | translate}}</p>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+    	<error cause="errorCode" ng-if="errorCode" variables="errorVariables"></error>
+
+        <div class="col-sm-12">
+            <div class="panel panel-success" ng-hide="error">
+                <div class="panel-heading">
+                    {{'show_mandatorid' | translate}}
+                </div>
+                <div class="panel-body" translate="mandator_explained">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th translate="mandatorid"></th>
+                                <th translate="license_key"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-show="!setupFinished">
+                                <td><i class="fa-refresh fa fa-spin"></i></td>
+                                <td><i class="fa-refresh fa fa-spin"></i></td>
+                            </tr>
+                            <tr ng-repeat="mid in mandatorid">
+                                <td>
+                                    {{mid.baseInformation.id}}
+                                </td>
+                                <td>
+                                    {{mid.registrationData.licenseKey}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="panel" ng-class="{'panel-success': !error, 'panel-danger': error}">
+                <div class="panel-heading">
+                    {{'order_confirm' | translate}}
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">{{'show_customerid' | translate}} {{customerid}}</li>
+                    <li class="list-group-item">{{'show_contractid' | translate}} {{contractid}}</li>
+                    <li class="list-group-item">{{'show_orderid' | translate}} {{orderid}}</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>{{'docs_header' | translate}}</h2>
+            <p>{{'docs_teaser' | translate}}</p>
+            <p><a class="btn btn-default" href="https://doc.yoochoose.net/" role="button">{{'docs_button' | translate}} »</a>
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <h2>{{'dashboard_header' | translate}}</h2>
+            <p>{{'dashboard_teaser' | translate}}</p>
+
+            <p><a class="btn btn-default" href="/" role="button" ng-disabled="!setupFinished"><i ng-show="!setupFinished" class="fa-refresh fa fa-spin"> </i>{{'dashboard_button' | translate}} »</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
