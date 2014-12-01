@@ -120,6 +120,10 @@ angular.module('ycBookingApp')
                     var ycOrderCreated = ycRestfrontend.createOrder(ycOrder).$promise;
                     ycOrderCreated.catch(function(){$timeout(function(){$scope.errorCode = ["order_placement_error"]})});
 
+                    if (paymentData.selectedPaymentMethod === "BlackLabel:PayPal") {
+                        payment.bearer.emailAddress = customerData.emailAddress;
+                    }
+
                     //continue to payment
                     signup.paySignupInteractive(self.iteroJSPayment, paymentData, order, function (data) {
                         // This callback will be invoked when the signup succeeded (or failed)
