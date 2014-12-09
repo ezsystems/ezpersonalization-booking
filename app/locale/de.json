@@ -42,8 +42,8 @@
   "accept_terms": "Ich akzeptiere die <a href=\"https://www.yoochoose.com/agb\" target=\"_blank\">Allgemeinen Geschäftsbedingungen</a>",
   "payment_method": "Bezahlmethode",
   "account_holder": "Kontoinhaber",
-  "account_number": "Kontonummer",
-  "bank_routing_code": "Bankleitzahl",
+  "account_number": "IBAN",
+  "bank_routing_code": "BIC",
   "card_holder": "Karteninhaber",
   "card_number": "Kartennummer",
   "card_expires": "Gültig bis",
@@ -87,7 +87,10 @@
   "mandator_explained": "Mandantennummer und Lizenzschlüssel werden benötigt um unseren service zu nutzen. Falls sie ein Shop-Plugin nutzen, müssen Sie Mandantennummer und Lizenzschlüssel in der Plugin-Konfiguration eintragen um das Plugin zu aktivieren. Andernfalls finden Sie weitere Informationen in der <a class=\"btn btn-default btn-xs\" href=\"https://doc.yoochoose.net/\">Dokumentation</a>.",
   "mandatorid": "Mandantennummer",
   "license_key": "Lizenzschlüssel",
-  "order_confirmation_error": "Die Bestellung konnte nicht abgeschlossen werden. Bitte kontaktieren Sie <a class=\"btn btn-danger btn-xs\" href=\"mailto:support@yoochoose.com?subject=order%20confirmation%20error&body=order%20{{orderid}}%0Acustomer%20{{customerid}}%0Acontract%20{{contractid}}\">support@yoochoose.com</a> mit Hinweis auf die unten aufgeführten Bestelldaten."
+  "order_confirmation_error": "Die Bestellung konnte nicht abgeschlossen werden. Bitte kontaktieren Sie <a class=\"btn btn-danger btn-xs\" href=\"mailto:support@yoochoose.com?subject=order%20confirmation%20error&body=order%20{{orderid}}%0Acustomer%20{{customerid}}%0Acontract%20{{contractid}}\">support@yoochoose.com</a> mit Hinweis auf die unten aufgeführten Bestelldaten.",
+  "credit_card": "<i class=\"fa fa-credit-card\"></i> Kreditkarte",
+  "direct_debit": "<i class=\"fa fa-bank\"></i> SEPA Lastschrift"
+
 
 
 

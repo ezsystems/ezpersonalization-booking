@@ -42,8 +42,8 @@
   "accept_terms": "I accept the <a href=\"https://www.yoochoose.com/en/terms-conditions/\" target=\"_blank\">Terms and Conditions</a>",
   "payment_method": "Payment Method",
   "account_holder": "Account Holder",
-  "account_number": "Account Number",
-  "bank_routing_code": "Bank Routing Code",
+  "account_number": "IBAN",
+  "bank_routing_code": "BIC",
   "card_holder": "Card Holder",
   "card_number": "Credit Card Number",
   "card_expires": "Expires",
@@ -87,7 +87,11 @@
   "mandator_explained": "Mandator id and license key are needed to use our service. If you are using a shop plugin, please enter them in the plugin configuration in order to activate the plugin. Otherwise you will find more detailed information in the <a class=\"btn btn-default btn-xs\" href=\"https://doc.yoochoose.net/\">documentation</a>.",
   "mandatorid": "Mandator id",
   "license_key": "License key",
-  "order_confirmation_error": "Your order could not be confirmed. Please contact <a class=\"btn btn-danger btn-xs\" href=\"mailto:support@yoochoose.com?subject=order%20confirmation%20error&body=order%20{{orderid}}%0Acustomer%20{{customerid}}%0Acontract%20{{contractid}}\">support@yoochoose.com</a> with reference to the order data displayed below."
+  "order_confirmation_error": "Your order could not be confirmed. Please contact <a class=\"btn btn-danger btn-xs\" href=\"mailto:support@yoochoose.com?subject=order%20confirmation%20error&body=order%20{{orderid}}%0Acustomer%20{{customerid}}%0Acontract%20{{contractid}}\">support@yoochoose.com</a> with reference to the order data displayed below.",
+  "credit_card": "<i class=\"fa fa-credit-card\"></i> Credit Card",
+  "direct_debit": "<i class=\"fa fa-bank\"></i> SEPA Direct Debit",
+  "paypal_payment_select": "<i class=\"fa fa-paypal\"></i> PayPal"
+
 
  
 
