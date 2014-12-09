@@ -17,6 +17,11 @@ angular.module('ycBookingApp')
         $scope.ready = false;
         $scope.paymentMethods = {};
         $scope.paymentMethodEnum = [];
+        $scope.paymentMethodNames = {
+            'CreditCard:Wirecard': 'credit_card',
+            'Debit:Wirecard': 'direct_debit',
+            'PayPal': 'paypal_payment_select'
+        }
         $scope.payment = {
             bearer: ''
         };
@@ -74,11 +79,11 @@ angular.module('ycBookingApp')
         });
 
         $scope.isDebit = function () {
-            return $scope.payment.bearer === 'Debit:Paymill' || $scope.payment.bearer === 'Debit:FakePSP';
+            return $scope.payment.bearer === 'Debit:Wirecard' || $scope.payment.bearer === 'Debit:FakePSP';
         };
 
         $scope.isCreditCard = function () {
-            return $scope.payment.bearer === 'CreditCard:Paymill' || $scope.payment.bearer === 'CreditCard:FakePSP';
+            return $scope.payment.bearer === 'CreditCard:Wirecard' || $scope.payment.bearer === 'CreditCard:FakePSP';
         };
 
         $scope.needsEmail = function () {
