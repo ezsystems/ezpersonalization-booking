@@ -20,6 +20,20 @@ angular.module('ycBookingApp')
         $scope.payment = {
             bearer: ''
         };
+        if ($sessionStorage.payment && $sessionStorage.payment.emailAddress) {
+            $scope.payment.emailAddress = $sessionStorage.payment.emailAddress;
+        } else {
+            $scope.payment.emailAddress = $scope.billing.email
+        }
+
+        
+        $scope.storeSession = function () {
+            $sessionStorage.payment = {
+                "emailAddress": $scope.payment.emailAddress
+            };
+        };
+
+
         $scope.pickdate = function ($event) {
             $event.preventDefault();
             $event.stopPropagation();
@@ -67,6 +81,12 @@ angular.module('ycBookingApp')
             return $scope.payment.bearer === 'CreditCard:Paymill' || $scope.payment.bearer === 'CreditCard:FakePSP';
         };
 
+        $scope.needsEmail = function () {
+            return $scope.payment.bearer === 'Paypal' || (!$scope.isDebit() && !$scope.isCreditCard());
+        };
+
+        
+
 
         function checkout(cartData, billingData, paymentData) {
             $scope.errorCode =[];
@@ -104,7 +124,8 @@ angular.module('ycBookingApp')
                 paymentData.expiryMonth = extractMonth(paymentData.validto);
                 paymentData.expiryYear = extractYear(paymentData.validto);
             }
-
+            //paymentData.emailAddress = customerData.emailAddress;
+            
             var signup = new IteroJS.Signup();
 
             signup.createOrder(cart, customerData, function (order) {
@@ -119,6 +140,8 @@ angular.module('ycBookingApp')
                     };
                     var ycOrderCreated = ycRestfrontend.createOrder(ycOrder).$promise;
                     ycOrderCreated.catch(function(){$timeout(function(){$scope.errorCode = ["order_placement_error"]})});
+
+
 
                     //continue to payment
                     signup.paySignupInteractive(self.iteroJSPayment, paymentData, order, function (data) {
@@ -145,7 +168,10 @@ angular.module('ycBookingApp')
                         });
                     }, function (error) {
                         $scope.$apply(function () {
+                            console.log(error);
                             $scope.errorCode = error['errorCode'];
+                            $scope.errorMessage = error['errorMessage'];
+                            $scope.errorDetails = error['details'];
                             for (var i in $scope.errorCode) {
                                 if ($scope.errorCode[i] === "") {
                                     $scope.errorCode[i] = "UnmappedError";
@@ -157,7 +183,10 @@ angular.module('ycBookingApp')
                 },
                 function (error) {
                     $scope.$apply(function () {
+                        console.log(error);
                         $scope.errorCode = error['errorCode'];
+                        $scope.errorMessage = error['errorMessage'];
+                        $scope.errorDetails = error['details'];
                         if ($scope.errorCode[i] === "") {
                             $scope.errorCode[i] = "UnmappedError";
                         }
