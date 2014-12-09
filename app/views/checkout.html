@@ -1,10 +1,11 @@
 <div class="container">
     <form role="form" class="form" name="payment.form">
         <div class="row">
+
             <div class="form-group col-sm-12" show-errors>
                 <label for="paymentselect" class="control-label" translate="payment_method"></label>
                 <select name="paymentselect" id="paymentselect" class="form-control" data-ng-model="payment.bearer" auto-focus>
-                    <option data-ng-repeat="pm in paymentMethodEnum" value="{{pm}}">{{paymentMethodNames[pm] || pm }}</option>
+                    <option data-ng-repeat="pm in paymentMethodEnum" value="{{pm}}" translate="{{paymentMethodNames[pm] || pm}}"></option>
                 </select>
             </div>
 
@@ -15,11 +16,11 @@
                 </div>
                 <div class="form-group col-sm-6" show-errors>
                     <label for="accountNumber" class="control-label" translate="account_number"></label>
-                    <input data-ng-model="payment.bankAccountNumber" ng-required="isDebit()" id="accountNumber" name="accountNumber" maxlength="10" type="text" class="form-control" placeholder="{{'account_number' |translate}}" />
+                    <input data-ng-model="payment.iban" ng-required="isDebit()" id="bankAccountIban" name="bankAccountIban" type="text" class="form-control" placeholder="{{'account_number' |translate}}" />
                 </div>
                 <div class="form-group col-sm-6" show-errors>
                     <label for="bankRoutingCode" class="control-label" translate="bank_routing_code"></label>
-                    <input data-ng-model="payment.bankRoutingCode" ng-required="isDebit()" id="bankRoutingCode" name="bankRoutingCode" maxlength="8" type="text" class="form-control" placeholder="{{'bank_routing_code' | translate}}" />
+                    <input data-ng-model="payment.bic" ng-required="isDebit()" id="bankBic" name="bankBic" type="text" class="form-control" placeholder="{{'bank_routing_code' | translate}}" />
                 </div>
             </div>
             <div class="payment-cc" data-ng-if="isCreditCard()">
