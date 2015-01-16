@@ -25,13 +25,15 @@ angular.module('ycBookingApp')
         $scope.payment = {
             bearer: ''
         };
+        /*
         if ($sessionStorage.payment && $sessionStorage.payment.emailAddress) {
             $scope.payment.emailAddress = $sessionStorage.payment.emailAddress;
         } else {
             $scope.payment.emailAddress = $scope.billing.email
         }
+        */
+        $scope.payment.emailAddress = '';
 
-        
         $scope.storeSession = function () {
             $sessionStorage.payment = {
                 "emailAddress": $scope.payment.emailAddress
