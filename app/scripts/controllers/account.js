@@ -90,6 +90,12 @@ angular.module('ycBookingApp')
                 if ($scope.passwordNeeded) {
                 	$scope.changePassword();
                 }
+                window._paq.push(['setCustomVariable',
+                    5,
+                    "account-email",
+                    $scope.account.email,
+                    "visit"
+                ]);
             }
         };
 
