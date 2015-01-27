@@ -241,6 +241,12 @@ angular.module('ycBookingApp')
                                     $scope.errorCode[i] = "UnmappedError";
                                 }
                             }
+                            if (window._paq){
+                                window._paq.push(['trackEvent',
+                                    'pactas-error',
+                                    JSON.stringify(error)
+                                ]);
+                            };
                         })
                     });
 
@@ -254,9 +260,17 @@ angular.module('ycBookingApp')
                         if ($scope.errorCode[i] === "") {
                             $scope.errorCode[i] = "UnmappedError";
                         }
+	                    if (window._paq){
+	                        window._paq.push(['trackEvent',
+	                            'pactas-error',
+	                            JSON.stringify(error)
+	                        ]);
+	                    };
                     })
                 });
         }
+
+
 
         $scope.checkout = function () {
             if (window._paq){
