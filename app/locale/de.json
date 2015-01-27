@@ -6,7 +6,7 @@
   "firstname": "Vorname",
   "lastname": "Nachname",
   "email": "E-Mail",
-  "invoice_email": "Rechnugs E-Mail",
+  "invoice_email": "Rechnungs E-Mail",
   "paypal_email": "PayPal E-Mail",
   "password": "Passwort",
   "verify_password": "Passwort überprüfen",
