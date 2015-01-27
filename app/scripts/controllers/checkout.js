@@ -105,7 +105,7 @@ angular.module('ycBookingApp')
 
 
         function checkout(cartData, billingData, paymentData) {
-            $scope.errorCode =[];
+            delete $scope.errorCode;
             $scope.checkoutInProgress = true
 
 
