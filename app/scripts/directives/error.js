@@ -31,7 +31,7 @@ angular.module('ycBookingApp')
                 if (window._paq){
                     window._paq.push(['trackEvent',
                         'error-displayed',
-                        JSON.stringify([$scope.cause, message, details])
+                        JSON.stringify([$scope.cause, $scope.message, $scope.details])
                     ]);
                 };
             }
