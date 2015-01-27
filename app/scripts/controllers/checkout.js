@@ -92,12 +92,23 @@ angular.module('ycBookingApp')
             return $scope.payment.bearer === 'Paypal' || (!$scope.isDebit() && !$scope.isCreditCard());
         };
 
+        $scope.trackPaymentSelect = function() {
+            if (window._paq){
+                window._paq.push(['trackEvent',
+                    'payment-selected',
+                    $scope.payment.bearer
+                ]);
+            }
+        }
+
         
 
 
         function checkout(cartData, billingData, paymentData) {
             delete $scope.errorCode;
             $scope.checkoutInProgress = true
+
+
 
             var cart = {
                 planVariantId: cartData.planVariantId,
@@ -145,6 +156,20 @@ angular.module('ycBookingApp')
                         websiteUrl: cartData.website,
                         currency: cartData.currency
                     };
+                    if (window._paq){
+                        window._paq.push(['trackEvent',
+                            'pactas-order-created',
+                            order.OrderId,
+                            cartData.productcode
+                        ]);
+                    };
+                    if (window._paq){
+                        window._paq.push(['trackEvent',
+                            'pactas-customer-created',
+                            order.CustomerId
+                        ]);
+                    };
+
                     var ycOrderCreated = ycRestfrontend.createOrder(ycOrder).$promise;
                     ycOrderCreated.catch(function(){$timeout(function(){$scope.errorCode = ["order_placement_error"]})});
 
@@ -156,7 +181,27 @@ angular.module('ycBookingApp')
                         // Note that the callback must use $apply, otherwise angularjs won't notice we changed something:
                         $scope.$apply(function () {
                             if (!data.Url) {
+                                if (window._paq){
+                                    window._paq.push(['trackEvent',
+                                        'pactas-contract-created',
+                                        data.ContractId
+                                    ]);
+                                };
+				                if (window._paq){
+					                window._paq.push(['setCustomVariable',
+					                    4,
+					                    "contractId",
+					                    data.ContractId,
+					                    "visit"
+					                ]);
+					            }
                             	ycOrderCreated.then(function(){
+                                    if (window._paq){
+                                        window._paq.push(['trackEvent',
+                                            'yc-order-created',
+                                            data.OrderId
+                                        ]);
+                                    };
 	                                $scope.isSuccess = true; //done
 	                                var params = {
 	                                    contractid: data.ContractId,
@@ -169,6 +214,18 @@ angular.module('ycBookingApp')
                             	})
                             } else {
                             	ycOrderCreated.then(function(){
+                                    if (window._paq){
+                                        window._paq.push(['trackEvent',
+                                            'yc-order-created',
+                                            data.OrderId
+                                        ]);
+                                    };
+                                    if (window._paq){
+                                        window._paq.push(['trackEvent',
+                                            'payment-redirect',
+                                            paymentData.bearer
+                                        ]);
+                                    };
                                 	window.location = data.Url; // redirect required, e.g. paypal, skrill
                             	});
                             }
@@ -202,12 +259,34 @@ angular.module('ycBookingApp')
         }
 
         $scope.checkout = function () {
+            if (window._paq){
+                        window._paq.push(['trackEvent',
+                            'checkout-triggered',
+                            $scope.payment.bearer
+                        ]);
+                    }
             if ($scope.payment.form.$valid) {
                 $scope.checkoutInProgress = true;
                 ycRestfrontend.getPlan($scope.booking.productcode).$promise.then(function (reponse) {
                     $scope.booking.planVariantId = reponse.comaId.variant;
                     checkout($scope.booking, $scope.billing, $scope.payment);
                 });
+            } else {
+                var s = "";
+                for (var i in $scope.payment.form.$error) {
+                    var names = "";
+                    for (var j in $scope.payment.form.$error[i]) {
+                        names = names + $scope.payment.form.$error[i][j].$name + ","
+                    }
+                    s += ''+ i +':' + names + ";";
+                    
+                }
+                if (window._paq){
+                    window._paq.push(['trackEvent',
+                        'payment-data-invalid',
+                        s
+                    ]);
+                }
             }
         };
     

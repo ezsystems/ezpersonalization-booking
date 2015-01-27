@@ -121,6 +121,20 @@ angular
                                 customerid: data.CustomerId,
                                 orderid: data.OrderId
                             };
+                            if (window._paq){
+                                window._paq.push(['trackEvent',
+                                    'pactas-contract-created',
+                                    data.ContractId
+                                ]);
+                            };
+                            if (window._paq){
+                                window._paq.push(['setCustomVariable',
+                                    4,
+                                    "contractId",
+                                    data.ContractId,
+                                    "visit"
+                                ]);
+                            }
                             $state.go('finished', params, {
                                 location: true
                             });
