@@ -26,12 +26,6 @@ angular.module('ycBookingApp')
                     $scope.contractid
                 ]);
             };
-            if (window._paq){
-                window._paq.push(['trackEvent',
-                    'yc-mandator-created',
-                    response.createdMandators
-                ]);
-            };
             $scope.setupFinished = true;
             $scope.error = false;
             $scope.mandatorid = response.createdMandators;
