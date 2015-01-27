@@ -67,6 +67,7 @@ angular.module('ycBookingApp')
                 lang: $scope.account.lang,
                 email: $scope.account.email
             };
+
             $sessionStorage.account = $scope.account;
             ycRestfrontend.updateProfile(params).$promise.catch(function(errror){
                 $timeout(function(){$scope.errorCode = ["update_account_error"];});
@@ -84,11 +85,18 @@ angular.module('ycBookingApp')
         };
 
         $scope.submit = function () {
-            $scope.updateProfile();
-            if ($scope.passwordNeeded) {
-            	$scope.changePassword();
+            if ($scope.account.form.$valid){
+                $scope.updateProfile();
+                if ($scope.passwordNeeded) {
+                	$scope.changePassword();
+                }
             }
         };
+
+        $scope.$on('$stateChangeStart', 
+            function(event, toState, toParams, fromState, fromParams){
+                $scope.submit();
+            })
 
         $scope.isNativeLogin = function(){
         	return $scope.account.provider === undefined || $scope.account.provider === null;

@@ -26,4 +26,9 @@ angular.module('ycBookingApp')
         $scope.storeSession = function () {
             $sessionStorage.billing = $scope.billing;
         };
+
+        $scope.$on('$stateChangeStart', 
+	        function(event, toState, toParams, fromState, fromParams){
+	            $scope.storeSession();
+	        })
     });

@@ -20,6 +20,18 @@ angular.module('ycBookingApp')
             orderId: $stateParams.orderid,
             contractId: $stateParams.contractid
         }).$promise.then(function (response) {
+            if (window._paq){
+                window._paq.push(['trackEvent',
+                    'yc-contract-confirmed',
+                    $scope.contractid
+                ]);
+            };
+            if (window._paq){
+                window._paq.push(['trackEvent',
+                    'yc-mandator-created',
+                    response.createdMandators
+                ]);
+            };
             $scope.setupFinished = true;
             $scope.error = false;
             $scope.mandatorid = response.createdMandators;
@@ -29,6 +41,12 @@ angular.module('ycBookingApp')
                 'orderid': $scope.orderid,
                 'customerid': $scope.customerid,
                 'contractid': $scope.contractid
+            };
+            if (window._paq){
+                window._paq.push(['trackEvent',
+                    'yc-contract-confirmation-error',
+                    "contract:"+ $scope.contractid + ', order:' + $scope.orderid + ', customer:' + $scope.customerid
+                ]);
             };
 
         	$scope.setupFinished = true;

@@ -17,13 +17,16 @@ angular.module('ycBookingApp')
             replace: true,
             controller: function ($scope, $state, tab) {
                 function proceed() {
+                    if (window._paq){
+                        window._paq.push(['trackEvent',
+                            'continue',
+                            $state.current.name
+                        ]);
+                    }
                     for (var i = 0; i < $scope.tabs.length; i++) {
                         var tab = $scope.tabs[i];
                         if (tab.id === $state.current.name) {
                             var nextIndex = i + 1;
-                            if ($scope.callback !== undefined){
-                                $scope.callback()
-                            }
                             if (nextIndex < $scope.tabs.length) {
                                 $state.go($scope.tabs[nextIndex].id, {}, {
                                     location: true

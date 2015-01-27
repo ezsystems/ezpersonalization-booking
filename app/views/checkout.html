@@ -4,7 +4,7 @@
 
             <div class="form-group col-sm-12" show-errors>
                 <label for="paymentselect" class="control-label" translate="payment_method"></label>
-                <select name="paymentselect" id="paymentselect" class="form-control" data-ng-model="payment.bearer" auto-focus>
+                <select name="paymentselect" id="paymentselect" class="form-control" data-ng-model="payment.bearer" ng-change="trackPaymentSelect()" auto-focus>
                     <option data-ng-repeat="pm in paymentMethodEnum" value="{{pm}}" translate="{{paymentMethodNames[pm] || pm}}"></option>
                 </select>
             </div>

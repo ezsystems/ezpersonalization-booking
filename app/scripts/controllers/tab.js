@@ -40,12 +40,30 @@ angular.module('ycBookingApp')
 
         $rootScope.$on('$stateChangeStart',
             function (event, toState, toParams, fromState, fromParams) {
+                var _form_error = "";
                 if ($scope[fromState.name] !== undefined && $scope[fromState.name].form !== undefined) {
                     $scope[fromState.name].valid = $scope[fromState.name].form.$valid;
+                    var s = "";
+                    for (var i in $scope[fromState.name].form.$error) {
+                        var names = "";
+                        for (var j in $scope[fromState.name].form.$error[i]) {
+                            names = names + $scope[fromState.name].form.$error[i][j].$name + ","
+                        }
+                        s += ''+ i +':' + names + ";";
+                        
+                    }
+                    _form_error = s;
                 }
                 if (!isEnabled(toState.name)) {
                     $scope.$broadcast('show-errors-check-validity');
                     event.preventDefault();
+                }
+                if (window._paq){
+                    window._paq.push(['trackEvent',
+                        'state-change:' + fromState.name + '->' + toState.name,
+                        isEnabled(toState.name),
+                        _form_error
+                    ]);
                 }
             });
 
