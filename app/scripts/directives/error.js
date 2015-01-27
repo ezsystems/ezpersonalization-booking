@@ -28,6 +28,12 @@ angular.module('ycBookingApp')
                         $scope.cause[i] = "UnmappedError";
                     }
                 }
+                if (window._paq){
+                    window._paq.push(['trackEvent',
+                        'error-displayed',
+                        JSON.stringify([$scope.cause, message, details])
+                    ]);
+                };
             }
         };
     });
