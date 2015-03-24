@@ -91,7 +91,8 @@
   "license_key": "Lizenzschlüssel",
   "order_confirmation_error": "Die Bestellung konnte nicht abgeschlossen werden. Bitte kontaktieren Sie <a class=\"btn btn-danger btn-xs\" href=\"mailto:support@yoochoose.com?subject=order%20confirmation%20error&body=order%20{{orderid}}%0Acustomer%20{{customerid}}%0Acontract%20{{contractid}}\">support@yoochoose.com</a> mit Hinweis auf die unten aufgeführten Bestelldaten.",
   "credit_card": "<i class=\"fa fa-credit-card\"></i> Kreditkarte",
-  "direct_debit": "<i class=\"fa fa-bank\"></i> SEPA Lastschrift"
+  "direct_debit": "<i class=\"fa fa-bank\"></i> SEPA Lastschrift",
+  "retry_button": "Nochmal versuchen"
 
 
 
