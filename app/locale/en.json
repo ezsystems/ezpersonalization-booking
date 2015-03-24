@@ -92,7 +92,8 @@
   "order_confirmation_error": "Your order could not be confirmed. Please contact <a class=\"btn btn-danger btn-xs\" href=\"mailto:support@yoochoose.com?subject=order%20confirmation%20error&body=order%20{{orderid}}%0Acustomer%20{{customerid}}%0Acontract%20{{contractid}}\">support@yoochoose.com</a> with reference to the order data displayed below.",
   "credit_card": "<i class=\"fa fa-credit-card\"></i> Credit Card",
   "direct_debit": "<i class=\"fa fa-bank\"></i> SEPA Direct Debit",
-  "paypal_payment_select": "<i class=\"fa fa-paypal\"></i> PayPal"
+  "paypal_payment_select": "<i class=\"fa fa-paypal\"></i> PayPal",
+  "retry_button": "Try Again"
 
 
  
