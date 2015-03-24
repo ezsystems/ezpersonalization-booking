@@ -6,9 +6,38 @@
  * Controller of the ycBookingApp
  */
 angular.module('ycBookingApp')
-    .controller('CheckoutCtrl', function ($scope, $state, $timeout, $location, $sessionStorage, ycRestfrontend, ENV, $translate) {
+    .controller('CheckoutCtrl', function ($scope, $state, $timeout, $location, $sessionStorage, ycRestfrontend, ENV, $translate, $modal) {
         'use strict';
         var self = this;
+
+        $scope.openRetryModal = function () {
+
+            var modalInstance = $modal.open({
+                template: 
+                                '<div class="modal-content">' +
+                                    '<div class="modal-header">' +
+                                        '<h4 class="modal-title">Ooops!</h4>' +
+                                    '</div>' +
+                                    '<div class="modal-body">' +
+                                        '<div class="row">'+
+                                            '<error cause="errorCode" message="errorMessage" details="errorDetails"></error>' +
+                                        '</div>'+
+                                    '</div>' +
+                                    '<div class="modal-footer">' +
+                                        '<button class="btn btn-primary" ui-sref="billing" ng-click="$close()" type="submit"></i>' + "{{'retry_button' | translate}}" + '</button>' +
+                                    '</div>' +
+                                '</div>',
+                scope: $scope
+            });
+
+            modalInstance.result.then(function () {
+                $state.go('billing');
+            }, function () {
+                $state.go('billing');
+            });
+
+        };
+
     
 
         $scope.checkoutInProgress = false;
@@ -78,6 +107,7 @@ angular.module('ycBookingApp')
             });
         }, function (errorData) {
         	$scope.errorCode = ["payment_init_error"]
+            $scope.openRetryModal();
         });
 
         $scope.isDebit = function () {
@@ -100,6 +130,7 @@ angular.module('ycBookingApp')
                 ]);
             }
         }
+
 
         
 
@@ -247,6 +278,7 @@ angular.module('ycBookingApp')
                                     JSON.stringify(error)
                                 ]);
                             };
+                            $scope.openRetryModal();
                         })
                     });
 
@@ -260,12 +292,14 @@ angular.module('ycBookingApp')
                         if ($scope.errorCode[i] === "") {
                             $scope.errorCode[i] = "UnmappedError";
                         }
+
 	                    if (window._paq){
 	                        window._paq.push(['trackEvent',
 	                            'pactas-error',
 	                            JSON.stringify(error)
 	                        ]);
 	                    };
+                        $scope.openRetryModal();
                     })
                 });
         }
