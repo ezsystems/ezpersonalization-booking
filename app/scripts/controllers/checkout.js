@@ -176,7 +176,7 @@ angular.module('ycBookingApp')
             //paymentData.emailAddress = customerData.emailAddress;
             
             var signup = new IteroJS.Signup();
-
+            try{
             signup.createOrder(cart, customerData, function (order) {
                     // link contract and login here
                     var ycOrder = {
@@ -289,8 +289,10 @@ angular.module('ycBookingApp')
                         $scope.errorMessage = error['errorMessage'];
                         $scope.errorDetails = error['details'];
                         $scope.errorCode = error['errorCode'];
-                        if ($scope.errorCode[i] === "") {
-                            $scope.errorCode[i] = "UnmappedError";
+                        for (var i in $scope.errorCode) {
+                            if ($scope.errorCode[i] === "") {
+                                $scope.errorCode[i] = "UnmappedError";
+                            }
                         }
 
 	                    if (window._paq){
@@ -302,6 +304,26 @@ angular.module('ycBookingApp')
                         $scope.openRetryModal();
                     })
                 });
+            }catch (error){
+                console.log("error:", error)
+                $scope.errorMessage = error.message;
+                //$scope.errorDetails = error['details'];
+                $scope.errorCode = [error.name]
+                for (var i in $scope.errorCode) {
+                    if ($scope.errorCode[i] === "") {
+                        $scope.errorCode[i] = "UnmappedError";
+                    }
+                }
+
+                if (window._paq){
+                    window._paq.push(['trackEvent',
+                        'pactas-error',
+                        JSON.stringify(error)
+                    ]);
+                };
+                $scope.openRetryModal();
+                    
+            }
         }
 
 
