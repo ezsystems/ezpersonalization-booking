@@ -43,12 +43,13 @@
                 </div>
             </div>
         </div>
+         
         <div class="col-sm-12">
             <div class="panel" ng-class="{'panel-success': !error, 'panel-danger': error}">
-                <div class="panel-heading">
-                    {{'order_confirm' | translate}}
+                <div class="panel-heading" ng-click="isCollapsed = !isCollapsed">
+                    <i class="fa" ng-class="{'fa-chevron-down': isCollapsed, 'fa-chevron-right': !isCollapsed}"></i> {{'order_confirm' | translate}}
                 </div>
-                <ul class="list-group">
+                <ul class="list-group" collapse="isCollapsed">
                     <li class="list-group-item">{{'show_customerid' | translate}} {{customerid}}</li>
                     <li class="list-group-item">{{'show_contractid' | translate}} {{contractid}}</li>
                     <li class="list-group-item">{{'show_orderid' | translate}} {{orderid}}</li>
