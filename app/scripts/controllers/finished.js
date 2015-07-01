@@ -8,6 +8,8 @@
 angular.module('ycBookingApp')
     .controller('FinishedCtrl', function ($scope, $stateParams, $timeout, ycRestfrontend) {
         'use strict';
+        
+        $scope.isCollapsed = true;
 
         $scope.contractid = $stateParams.contractid;
         $scope.customerid = $stateParams.customerid;
