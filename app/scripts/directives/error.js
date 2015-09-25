@@ -9,7 +9,7 @@
 angular.module('ycBookingApp')
     .directive('error', function () {
         return {
-            template: '<div class="col-sm-12" ><div class="alert alert-danger"><ul style="margin-bottom: 15px;"><li ng-repeat="error in cause" translate="{{error}}" translate-values="{{variables}}" ></li></ul><div ng-if="message" class="panel panel-warning"><div class="panel-heading">Message</div><div class="panel-body">{{message}}</div></div><div ng-if="details" class="panel panel-warning"><div class="panel-heading">Details</div><div class="panel-body">{{details}}</div></div></div></div></div>',
+            template: '<div class="col-sm-12" ><div class="alert alert-danger"><ul style="margin-bottom: 15px;"><li ng-repeat="error in cause" translate="{{error}}" translate-compile translate-values="{{variables}}" ></li></ul><div ng-if="message" class="panel panel-warning"><div class="panel-heading">Message</div><div class="panel-body">{{message}}</div></div><div ng-if="details" class="panel panel-warning"><div class="panel-heading">Details</div><div class="panel-body">{{details}}</div></div></div></div></div>',
             restrict: 'E',
             scope: {
                 cause: '=',

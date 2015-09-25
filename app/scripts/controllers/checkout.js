@@ -20,7 +20,7 @@ angular.module('ycBookingApp')
                                     '</div>' +
                                     '<div class="modal-body">' +
                                         '<div class="row">'+
-                                            '<error cause="errorCode" message="errorMessage" details="errorDetails" translate-compile></error>' +
+                                            '<error cause="errorCode" message="errorMessage" details="errorDetails"></error>' +
                                         '</div>'+
                                     '</div>' +
                                     '<div class="modal-footer">' +
