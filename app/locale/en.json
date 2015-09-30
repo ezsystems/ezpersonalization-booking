@@ -94,7 +94,10 @@
   "credit_card": "<i class=\"fa fa-credit-card\"></i> Credit Card",
   "direct_debit": "<i class=\"fa fa-bank\"></i> SEPA Direct Debit",
   "paypal_payment_select": "<i class=\"fa fa-paypal\"></i> PayPal",
-  "retry_button": "Try Again"
+  "retry_button": "Try Again",
+  "password_required": "Please choose a password!",
+  "password_too_short": "The chosen password must have at least 8 characters."
+
 
 
  
