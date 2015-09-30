@@ -12,6 +12,7 @@ angular
     .module('ycBookingApp', [
         'ycBookingApp.rest',
         'ngResource',
+        'ngMessages',
         'ngSanitize',
         'ui.router',
         'ui.bootstrap.showErrors',
