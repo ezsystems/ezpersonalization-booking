@@ -33,13 +33,22 @@
         <div class="row">
             <div class="form-group col-sm-6" show-errors ng-if="passwordNeeded">
                 <label class="control-label" for="password" translate="password"></label>
-                <input type="password" ng-required="{{passwordNeeded}}" placeholder="{{'password' | translate}}" class="form-control" id="password" name="password" ng-model="account.password" />
+                <input type="password" ng-required="{{passwordNeeded}}" minlength="8" placeholder="{{'password' | translate}}" class="form-control" id="password" name="password" ng-model="account.password" />
+                <div ng-messages="account.form.password.$error" class="error-messages" ng-if="!account.form.password.$pristine">
+                    <div  ng-message="required" >{{"password_required" | translate}}</div>
+                    <div  ng-message="minlength">{{"password_too_short" | translate}}</div>
+                </div>   
             </div>
+
             <div class="form-group col-sm-6" show-errors ng-if="passwordNeeded">
                 <label class="control-label" for="verify" translate="verify_password"></label>
-                <input type="password" ng-required="{{passwordNeeded}}" placeholder="{{'verify_password' | translate}}" class="form-control" id="verify" name="verify" ng-model="account.verify" match="account.password" />
+                <input type="password" ng-required="{{passwordNeeded}}" minlength="8" placeholder="{{'verify_password' | translate}}" class="form-control" id="verify" name="verify" ng-model="account.verify" match="account.password" />
             </div>
+
+
+
         </div>
+     
 
         <div class="row">
             <error cause="errorCode" ng-if="errorCode"></error>
