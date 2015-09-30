@@ -29,6 +29,7 @@
   },
   "appPath": "app",
   "resolutions": {
-    "angular-ui-utils": "bower"
+    "angular-ui-utils": "bower",
+    "angular": "1.4.7"
   }
 }
