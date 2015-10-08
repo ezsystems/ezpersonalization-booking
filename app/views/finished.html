@@ -47,7 +47,7 @@
         <div class="col-sm-12">
             <div class="panel" ng-class="{'panel-success': !error, 'panel-danger': error}">
                 <div class="panel-heading" ng-click="isCollapsed = !isCollapsed">
-                    <i class="fa" ng-class="{'fa-chevron-down': isCollapsed, 'fa-chevron-right': !isCollapsed}"></i> {{'order_confirm' | translate}}
+                    <i class="fa" ng-class="{'fa-chevron-down': !isCollapsed, 'fa-chevron-right': isCollapsed}"></i> {{'order_confirm' | translate}}
                 </div>
                 <ul class="list-group" collapse="isCollapsed">
                     <li class="list-group-item">{{'show_customerid' | translate}} {{customerid}}</li>
