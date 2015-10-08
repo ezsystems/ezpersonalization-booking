@@ -27,6 +27,13 @@ angular.module('ycBookingApp')
             $sessionStorage.billing = $scope.billing;
         };
 
+        $scope.validateVatId = function(vatId) {
+            if (vatId) {
+                return IteroJS.validateVatId(vatId);
+            }
+            return true;
+        }
+
         $scope.$on('$stateChangeStart', 
 	        function(event, toState, toParams, fromState, fromParams){
 	            $scope.storeSession();
