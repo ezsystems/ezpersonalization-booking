@@ -81,6 +81,7 @@
   "InvalidCountry": "The selected Country is not valid.",
   "BearerRejected": "Your payment has been rejected.",
   "InvalidVatId": "<strong>The supplied VAT Id is not valid.</strong><br/> Please go back to <a class=\"btn btn-danger btn-xs\" ui-sref=\"billing\">billing information</a> and enter a correct VAT Id.",
+  "validation_invalid_vatid": "The supplied VAT Id is not valid. Please do not enter whitespace characters.",
   "timezone": "Timezone",
   "currency": "Currency",
   "language": "Language",

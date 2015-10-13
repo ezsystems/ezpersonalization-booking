@@ -81,6 +81,7 @@
   "InvalidCountry": "Das gewählte Land ist ungültig.",
   "BearerRejected": "Die Bezahlung wurde abgelehnt.",
   "InvalidVatId": "<strong>Die angegebene Umsatzsteuernummer ist nicht gültig</strong>.<br/>Bitte geben Sie bei Ihren <a class=\"btn btn-danger btn-xs\" ui-sref=\"billing\">Rechnungsdaten</a> eine korrekte Umsatzsteurnummer an.",
+  "validation_invalid_vatid": "Die angegebene Umsatzsteuernummer ist nicht gültig. Bitte achten Sie darauf, dass Sie keine Leerzeichen verwendet haben.",
   "timezone": "Zeitzone",
   "currency": "Währung",
   "language": "Sprache",
