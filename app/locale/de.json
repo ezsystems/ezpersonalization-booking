@@ -6,6 +6,7 @@
   "firstname": "Vorname",
   "lastname": "Nachname",
   "email": "E-Mail",
+  "coupon_code": "Gutschein-Code",
   "invoice_email": "Rechnungs E-Mail",
   "paypal_email": "PayPal E-Mail",
   "password": "Passwort",
