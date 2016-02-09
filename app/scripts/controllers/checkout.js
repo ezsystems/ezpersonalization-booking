@@ -143,6 +143,7 @@ angular.module('ycBookingApp')
 
             var cart = {
                 planVariantId: cartData.planVariantId,
+                couponCode: $scope.payment.coupon.code,
                 customFields: {
                     website: cartData.website
                 }
