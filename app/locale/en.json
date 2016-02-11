@@ -97,6 +97,8 @@
   "direct_debit": "<i class=\"fa fa-bank\"></i> SEPA Direct Debit",
   "paypal_payment_select": "<i class=\"fa fa-paypal\"></i> PayPal",
   "retry_button": "Try Again",
+  "invalid_coupon_code": "Invalid Coupon Code!",
+  "invalid_coupon_code_error_message": "Please re enter the coupon code.",
   "password_required": "Please choose a password!",
   "password_too_short": "The chosen password must have at least 8 characters."
 
