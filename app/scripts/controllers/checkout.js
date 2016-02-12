@@ -31,9 +31,9 @@ angular.module('ycBookingApp')
       });
 
       modalInstance.result.then(function () {
-        $state.go('checkout');
+        $state.go('billing');
       }, function () {
-        $state.go('checkout');
+        $state.go('billing');
       });
 
     };
@@ -44,26 +44,19 @@ angular.module('ycBookingApp')
         template:
         '<div class="modal-content">' +
         '<div class="modal-header">' +
-        "{{'invalid_coupon_code' | translate}}" +
+        '<h3 class="modal-title">' + "{{'invalid_coupon_code' | translate}}" + '</h3>' +
         '</div>' +
         '<div class="modal-body">' +
         '<div class="row">'+
-        '<error >' + "{{'invalid_coupon_code_error_message' | translate}}" + '</error>' +
+        '<p align="center">'+'<b>'+   "{{'invalid_coupon_code_error_message' | translate}}" + '</b>' +'</p>' +
         '</div>'+
         '</div>' +
         '<div class="modal-footer">' +
-        '<button class="btn btn-primary" ui-sref="billing" ng-click="$close()" type="submit"></i>OK</button>' +
+        '<button class="btn btn-primary" ng-click="$close()" type="submit"></i>OK</button>' +
         '</div>' +
         '</div>',
         scope: $scope
       });
-
-      modalInstance.result.then(function () {
-        $modal.close();
-      }, function () {
-        $modal.close();
-      });
-
     };
 
     $scope.couponCodeValidator = true;
@@ -163,13 +156,11 @@ angular.module('ycBookingApp')
 
     $scope.validateCouponCode = function() {
       return $scope.payment.couponValidator;
-      console.log('validationCouponCode  ');
     }
 
 
     function checkout(cartData, billingData, paymentData) {
       delete $scope.errorCode;
-      console.log('checkoutSTARTED  ');
 
       var cart = {
         planVariantId: cartData.planVariantId,
@@ -209,15 +200,12 @@ angular.module('ycBookingApp')
       var signup = new IteroJS.Signup();
       try{
         signup.createOrder(cart, customerData, function (order) {
-            console.log('GOT ORDER');
             // Coupon Code validation
             if( order.hasOwnProperty('Code') ) {
-              console.log('CODE EXISTSTs in ANSWER  ');
               $scope.checkoutInProgress = false
               $scope.openCouponInvalidMessage();
             }
             else {
-              console.log('CODE DOENT EXISTSTs in ANSWER  ');
               $scope.checkoutInProgress = true
               // link contract and login here
               var ycOrder = {
