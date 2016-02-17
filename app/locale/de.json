@@ -6,6 +6,7 @@
   "firstname": "Vorname",
   "lastname": "Nachname",
   "email": "E-Mail",
+  "coupon_code": "Gutschein-Code",
   "invoice_email": "Rechnungs E-Mail",
   "paypal_email": "PayPal E-Mail",
   "password": "Passwort",
@@ -95,6 +96,8 @@
   "credit_card": "<i class=\"fa fa-credit-card\"></i> Kreditkarte",
   "direct_debit": "<i class=\"fa fa-bank\"></i> SEPA Lastschrift",
   "retry_button": "Nochmal versuchen",
+  "invalid_coupon_code": "Ungültige Gutscheincode!",
+  "invalid_coupon_code_error_message": "Bitte erneut den Gutschein-Code eingeben.",
   "password_required": "Bitte wählen Sie ein Passwort!",
   "password_too_short": "Das gewählte Passwort muss aus mindestens 8 Zeichen bestehen."
 
