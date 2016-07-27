@@ -31,7 +31,7 @@ angular.module('ycBookingApp')
                 $scope.account.lang = result.localProfile.lang;
                 $translate.use($scope.account.lang);
             } else if (!$scope.account.lang){
-                $scope.account.lang == $translate.use();
+                $scope.account.lang = $translate.use();
             }
             if (!$scope.account.timezone) {
                 $scope.account.timezone = result.localProfile.timeZone;
@@ -85,7 +85,7 @@ angular.module('ycBookingApp')
         };
 
         $scope.submit = function () {
-            if ($scope.account.form.$valid){
+            if ($scope.account.form.$valid) {
                 $scope.updateProfile();
                 if ($scope.passwordNeeded) {
                 	$scope.changePassword();
@@ -102,11 +102,11 @@ angular.module('ycBookingApp')
         $scope.$on('$stateChangeStart', 
             function(event, toState, toParams, fromState, fromParams){
                 $scope.submit();
-            })
+            });
 
-        $scope.isNativeLogin = function(){
+        $scope.isNativeLogin = function() {
         	return $scope.account.provider === undefined || $scope.account.provider === null;
-        }
+        };
 
 
 
