@@ -51,7 +51,7 @@
             </div>
             <div class="form-group col-sm-8"  show-errors>
                 <label class="control-label" for="vatid">{{'vatid' | translate}}</label>
-                <input type="text" placeholder="{{'vatid' | translate}}" class="form-control" id="vatid" name="vatid" ui-validate="'validateVatId($value)'" ng-model="billing.vatid" />
+                <input type="text" placeholder="{{'vatid_placeholder' | translate}}" class="form-control" id="vatid" name="vatid" ui-validate="'validateVatId($value)'" ng-model="billing.vatid" />
                 <div ng-messages="billing.form.vatid.$error" class="error-messages" ng-if="!billing.form.vatid.$pristine">
                     <div  ng-message="validator" >{{"validation_invalid_vatid" | translate}}</div>
                 </div>   
