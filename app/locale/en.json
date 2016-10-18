@@ -23,6 +23,7 @@
   "city": "City",
   "country": "Country",
   "vatid": "VAT id",
+  "vatid_placeholder": "If not provided, german VAT (19%) will be deducted",
   "invoice_email_placeholder": "invoice@my-company.com",
   "optional_contact_info": "Optional contact data",
   "phone_number": "Phone",

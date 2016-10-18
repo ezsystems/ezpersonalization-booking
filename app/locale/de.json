@@ -23,6 +23,7 @@
   "city": "Ort",
   "country": "Land",
   "vatid": "Umsatzsteuernummer",
+  "vatid_placeholder": "Falls nicht angegeben, werden deutsche Ust. berechnet (19%)",
   "invoice_email_placeholder": "rechnungen@meine-firma.de",
   "optional_contact_info": "Optionale Kontaktdaten",
   "phone_number": "Telefon",
