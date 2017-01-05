@@ -19,8 +19,8 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <link ng-if="$location.host().indexOf('ezservices') === -1" rel="stylesheet" href="styles/bootstrap.css">
-    <link ng-if="$location.host().indexOf('ezservices') !== -1" rel="stylesheet" href="styles/bootstrap_ez.css">
+    <link ng-if="$location.host().indexOf('ezservices') === -1" ng-href="styles/bootstrap.css" type ="text/css" rel="stylesheet">
+    <link ng-if="$location.host().indexOf('ezservices') !== -1" ng-href="styles/bootstrap_ez.css" type ="text/css" rel="stylesheet">
     <!-- endbuild -->
 </head>
 
