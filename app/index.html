@@ -13,8 +13,8 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<!-- build:css(.) styles/vendor.css -->
 	<!-- bower:css -->
-	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
-	<link rel="stylesheet" href="bower_components/famfamfam-flags-sprite/src/flags-sprite.min.css" />
+	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="bower_components/famfamfam-flags-sprite/src/flags-sprite.min.css">
 	<!-- endbower -->
 	<!-- endbuild -->
 	<!-- build:css(.tmp) styles/main.css -->
@@ -26,16 +26,12 @@
         console.log('wLH:', window.location.hostname);
         console.log('boolean:', window.location.hostname.indexOf('ezservices') === -1 );
             window.location.hostname.indexOf('ezservices') === -1 ?
-                '<link rel="stylesheet" href="styles/bootstrap.css"/>' :  
-                '<link rel="stylesheet" href="styles/bootstrap_ez.css"/>';
+                '<link rel="stylesheet" href="styles/bootstrap.css" type="text/css">' :  
+                '<link rel="stylesheet" href="styles/bootstrap_ez.css" type="text/css">';
         console.log(stylesheetToInclude);
 
         document.write( stylesheetToInclude );
     </script>
-	<!-- 
-    <link ng-if="$location.host().indexOf('ezservices') === -1" ng-href="styles/bootstrap.css" type ="text/css" rel="stylesheet">
-    <link ng-if="$location.host().indexOf('ezservices') !== -1" ng-href="styles/bootstrap_ez.css" type ="text/css" rel="stylesheet">
-    -->
 	<!-- endbuild -->
 </head>
 
