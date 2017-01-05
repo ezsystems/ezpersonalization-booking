@@ -8,7 +8,7 @@
  * Controller of the ycBookingApp
  */
 angular.module('ycBookingApp')
-    .controller('TabCtrl', function ($state, $rootScope, $scope, tab, $sessionStorage) {
+    .controller('TabCtrl', function ($state, $rootScope, $scope, tab, $sessionStorage, $location) {
 
         function getTabIndexById(id) {
             for (var i = 0;
@@ -76,7 +76,7 @@ angular.module('ycBookingApp')
 
             });
 
-
+	$scope.$location = $location;
         $scope.tabs = tab.tabs;
 
         if ($scope.booking === undefined && $sessionStorage.booking !== undefined) {
