@@ -8,6 +8,7 @@
 angular.module('ycBookingApp')
     .controller('InitCtrl', function ($state, $stateParams, $sessionStorage, $scope, $window, $location, $translate) {
         'use strict';
+        $scope.$location = $location;
         if ($stateParams.directId !== undefined) {
             $sessionStorage.directId = $stateParams.directId;
         }
