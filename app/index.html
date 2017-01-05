@@ -23,9 +23,13 @@
     <script type="text/javascript">
         //when in eZ site, load eZ css; else load Yoochoose css 
         var stylesheetToInclude = 
+        console.log('wLH:', window.location.hostname);
+        console.log('boolean:', window.location.hostname.indexOf('ezservices') === -1 );
             window.location.hostname.indexOf('ezservices') === -1 ?
                 '<link rel="stylesheet" href="styles/bootstrap.css"/>' :  
                 '<link rel="stylesheet" href="styles/bootstrap_ez.css"/>';
+        console.log(stylesheetToInclude);
+
         document.write( stylesheetToInclude );
     </script>
 	<!-- 
@@ -85,7 +89,6 @@
 	<div class="container">
 		<hr />
 		<footer>
-			JDI location:{{$location.host()}}
 			<span ng-if="$location.host().indexOf('ezservices') === -1"> &copy; Yoochoose GmbH 2017 </span>
 			<span ng-if="$location.host().indexOf('ezservices') !== -1"> eZ Systems &reg; 2017 </span>
 		</footer>
