@@ -19,8 +19,8 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <link ng-if="window.location.hostname !== null && window.location.indexOf('ezservices') === -1" rel="stylesheet" href="styles/bootstrap.css">
-    <link ng-if="window.location.hostname !== null && window.location.indexOf('ezservices') !== -1" rel="stylesheet" href="styles/bootstrap_ez.css">
+    <link ng-if="$location.host().indexOf('ezservices') === -1" rel="stylesheet" href="styles/bootstrap.css">
+    <link ng-if="$location.host().indexOf('ezservices') !== -1" rel="stylesheet" href="styles/bootstrap_ez.css">
     <!-- endbuild -->
 </head>
 
@@ -41,8 +41,8 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a ng-if="window.location.hostname !== null && window.location.indexOf('ezservices') === -1" class="navbar-brand" href="#"> Yoochoose GmbH </a>
-                <a ng-if="window.location.hostname !== null && window.location.indexOf('ezservices') !== -1" class="navbar-brand" href="#"> eZ &reg; </a>
+                <a ng-if="$location.host().indexOf('ezservices') === -1" class="navbar-brand" href="#"> Yoochoose GmbH </a>
+                <a ng-if="$location.host().indexOf('ezservices') !== -1" class="navbar-brand" href="#"> eZ &reg; </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,9 +74,9 @@
     <div class="container">
         <hr />
         <footer>
-            location: {{$location.$$absUrl}}
-            <span ng-if="window.location.hostname !== null && window.location.indexOf('ezservices') === -1"> &copy; Yoochoose GmbH 2017 </span>
-            <span ng-if="window.location.hostname !== null && window.location.indexOf('ezservices') !== -1"> eZ Systems &reg; 2017 </span>
+            JDI location:{{$location.host()}}
+            <span ng-if="$location.host().indexOf('ezservices') === -1"> &copy; Yoochoose GmbH 2017 </span>
+            <span ng-if="$location.host().indexOf('ezservices') !== -1"> eZ Systems &reg; 2017 </span>
         </footer>
     </div>
 
