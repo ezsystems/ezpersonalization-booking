@@ -27,8 +27,9 @@
 
 	<!-- build:css(.tmp) styles/main.css -->
 		<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
 
-		   <script type="text/javascript">
+	<script type="text/javascript">
        //when in eZ site, load eZ css; else load Yoochoose css 
        console.log('wLH:', window.location.hostname);
        console.log('boolean:', window.location.hostname.indexOf('ezservices') === -1 );
@@ -39,7 +40,6 @@
        console.log(stylesheetToInclude);
        document.write( stylesheetToInclude );
    </script>
-	<!-- endbuild -->
 
 
 
