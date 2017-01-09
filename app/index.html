@@ -4,35 +4,45 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
+	<!-- the following comment (and more) is grunt-processhtml. it's an instruction for parser.
+	+ info, see https://www.npmjs.com/package/grunt-processhtml --> 
 	<!-- build:[href] /booking/ -->
-	<base href="/" />
+		<base href="/" />
 	<!-- /build -->
 
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<!-- build:css(.) styles/vendor.css -->
-	<!-- bower:css -->
-	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
-	<link rel="stylesheet" href="bower_components/famfamfam-flags-sprite/src/flags-sprite.min.css">
-	<!-- endbower -->
-	<!-- endbuild -->
-	<!-- build:css(.tmp) styles/main.css -->
-	<link rel="stylesheet" href="styles/main.css">
-	
-    <script type="text/javascript">
-        //when in eZ site, load eZ css; else load Yoochoose css 
-        console.log('wLH:', window.location.hostname);
-        console.log('boolean:', window.location.hostname.indexOf('ezservices') === -1 );
-        var stylesheetToInclude = 
-            window.location.hostname.indexOf('ezservices') === -1 ?
-                '<link rel="stylesheet" href="styles/bootstrap.css" type="text/css">' :  
-                '<link rel="stylesheet" href="styles/bootstrap_ez.css" type="text/css">';
-        console.log(stylesheetToInclude);
 
-        document.write( stylesheetToInclude );
-    </script>
+	<!-- the following comments are also instructions for parser. 
+	- grunt-usemin.	+ info, see https://www.npmjs.com/package/grunt-usemin 
+	- wiredep.	+ info, see https://www.npmjs.com/package/wiredep. 
+	see also: http://stephenplusplus.github.io/grunt-wiredep/ --> 
+	<!-- build:css(.) styles/vendor.css -->
+		<!-- bower:css -->
+		<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+		<link rel="stylesheet" href="bower_components/famfamfam-flags-sprite/src/flags-sprite.min.css" />
+		<!-- endbower -->
 	<!-- endbuild -->
+
+	<!-- build:css(.tmp) styles/main.css -->
+		<link rel="stylesheet" href="styles/main.css">
+
+		   <script type="text/javascript">
+       //when in eZ site, load eZ css; else load Yoochoose css 
+       console.log('wLH:', window.location.hostname);
+       console.log('boolean:', window.location.hostname.indexOf('ezservices') === -1 );
+       var stylesheetToInclude = 
+           window.location.hostname.indexOf('ezservices') === -1 ?
+               '<link rel="stylesheet" href="styles/bootstrap.css" type="text/css">' :  
+               '<link rel="stylesheet" href="styles/bootstrap_ez.css" type="text/css">';
+       console.log(stylesheetToInclude);
+       document.write( stylesheetToInclude );
+   </script>
+	<!-- endbuild -->
+
+
+
 </head>
 
 <body ng-app="ycBookingApp" ng-controller="TabCtrl" style="padding-top: 70px;">
