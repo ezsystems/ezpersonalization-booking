@@ -5,9 +5,9 @@
 	<meta charset="utf-8">
 	<title></title>
 	<!-- the following comment (and more) is grunt-processhtml. it's an instruction for parser.
-	+ info, see https://www.npmjs.com/package/grunt-processhtml --> 
+	+ info, see https://www.npmjs.com/package/grunt-processhtml -->
 	<!-- build:[href] /booking/ -->
-		<base href="/" />
+	<base href="/" />
 	<!-- /build -->
 
 	<meta name="description" content="">
@@ -17,31 +17,17 @@
 	<!-- the following comments are also instructions for parser. 
 	- grunt-usemin.	+ info, see https://www.npmjs.com/package/grunt-usemin 
 	- wiredep.	+ info, see https://www.npmjs.com/package/wiredep. 
-	see also: http://stephenplusplus.github.io/grunt-wiredep/ --> 
+	see also: http://stephenplusplus.github.io/grunt-wiredep/ -->
 	<!-- build:css(.) styles/vendor.css -->
-		<!-- bower:css -->
-		<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
-		<link rel="stylesheet" href="bower_components/famfamfam-flags-sprite/src/flags-sprite.min.css" />
-		<!-- endbower -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+	<link rel="stylesheet" href="bower_components/famfamfam-flags-sprite/src/flags-sprite.min.css" />
+	<!-- endbower -->
 	<!-- endbuild -->
 
 	<!-- build:css(.tmp) styles/main.css -->
-		<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="styles/main.css">
 	<!-- endbuild -->
-
-	<script type="text/javascript">
-       //when in eZ site, load eZ css; else load Yoochoose css 
-       console.log('wLH:', window.location.hostname);
-       console.log('boolean:', window.location.hostname.indexOf('ezservices') === -1 );
-       var stylesheetToInclude = 
-           window.location.hostname.indexOf('ezservices') === -1 ?
-               '<link rel="stylesheet" href="styles/bootstrap.css" type="text/css">' :  
-               '<link rel="stylesheet" href="styles/bootstrap_ez.css" type="text/css">';
-       console.log(stylesheetToInclude);
-       document.write( stylesheetToInclude );
-   </script>
-
-
 
 </head>
 
@@ -158,6 +144,19 @@
         document.write('<script src="' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':35729/livereload.js?snipver=1" type="text/javascript"><\/script>')
     </script>
 	<!-- endbuild -->
+
+	<!-- this script is here and not in head because it will not be written in the dist/index.html -->
+	<script type="text/javascript">
+       //when in eZ site, load eZ css; else load Yoochoose css 
+       console.log('wLH:', window.location.hostname);
+       console.log('boolean:', window.location.hostname.indexOf('ezservices') === -1 );
+       var stylesheetToInclude = 
+           window.location.hostname.indexOf('ezservices') === -1 ?
+               '<link rel="stylesheet" href="styles/bootstrap.css" type="text/css">' :  
+               '<link rel="stylesheet" href="styles/bootstrap_ez.css" type="text/css">';
+       console.log(stylesheetToInclude);
+       document.write( stylesheetToInclude );
+    </script>
 
 	<!-- Piwik -->
 	<script type="text/javascript">
