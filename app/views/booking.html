@@ -1,43 +1,41 @@
 <div class="container">
-  <form role="form" class="form" name="booking.form">
-    <div class="row">
-      <div class="form-group col-sm-6" show-errors>
-        <label class="control-label" for="product">{{'product_select' | translate}}</label>
-        <select required="" placeholder="{{'product_select' | translate}}" class="form-control" id="product" name="product" ng-model="booking.productcode"
-          ng-options="v as  p for (p, v) in plans" auto-focus></select>
-      </div>
-      <div class="form-group col-sm-6" show-errors>
-        <label class="control-label" for="website">{{'website' | translate}}</label>
-        <input type="text" required="" placeholder="{{'website_placeholder' | translate}}" class="form-control" id="website" name="website"
-          ng-model="booking.website" />
-      </div>
-      <div class="form-group col-sm-6" show-errors>
-        <label class="control-label" for="timezone" translate="timezone"></label>
-        <select required="" placeholder="{{'timezone' | translate}}" class="form-control" id="timezone" name="timezone" ng-model="booking.timezone"
-          ng-options="t for t in timezones"></select>
-      </div>
-      <div class="form-group col-sm-6" show-errors>
-        <label class="control-label" for="currency" translate="currency"></label>
-        <select required="" placeholder="{{'currency' | translate}}" class="form-control" id="currency" name="currency" ng-model="booking.currency"
-          ng-options="c for c in currencies"></select>
-      </div>
-    </div>
-    <div class="row" ng-if="booking.productcode">
-      <div class="col-sm-12">
-        <div class="panel panel-default panel">
-          <div class="panel-heading" translate="price_model"></div>
-          <div class="panel-body">
-            <iframe width="100%" height="220em" frameborder="0" ng-src="{{getIframeUrl()}}" ng-if="booking.productcode"></iframe>
-          </div>
+    <form role="form" class="form" name="booking.form">
+        <div class="row">
+            <div class="form-group col-sm-6" show-errors>
+                <label class="control-label" for="product">{{'product_select' | translate}}</label>
+                <select required="" placeholder="{{'product_select' | translate}}" class="form-control" id="product" name="product" ng-model="booking.productcode" ng-options="v as  p for (p, v) in plans" auto-focus></select>
+            </div>
+            <div class="form-group col-sm-6" show-errors>
+                <label class="control-label" for="website">{{'website' | translate}}</label>
+                <input type="text" required="" placeholder="{{'website_placeholder' | translate}}" class="form-control" id="website" name="website" ng-model="booking.website" />
+            </div>
+            <div class="form-group col-sm-6" show-errors>
+                <label class="control-label" for="timezone" translate="timezone"></label>
+                <select required="" placeholder="{{'timezone' | translate}}" class="form-control" id="timezone" name="timezone" ng-model="booking.timezone" ng-options="t for t in timezones"></select>
+            </div>
+            <div class="form-group col-sm-6" show-errors>
+                <label class="control-label" for="currency" translate="currency"></label>
+                <select required="" placeholder="{{'currency' | translate}}" class="form-control" id="currency" name="currency" ng-model="booking.currency" ng-options="c for c in currencies"></select>
+            </div>
+
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <error cause="errorCode" ng-if="errorCode"></error>
-      <div class="clearfix"></div>
-      <div class="form-group col-sm-2 col-sm-offset-10">
-        <next-button callback="storeSession" />
-      </div>
-    </div>
-  </form>
+        <div class="row" ng-if="booking.productcode">
+        	<div class="col-sm-12" >
+				<div class="panel panel-default panel">
+					<div class="panel-heading" translate="price_model"></div>
+						<div class="panel-body">
+							<iframe width="100%" height="220em" frameborder="0" ng-src="{{getIframeUrl()}}" ng-if="booking.productcode"></iframe>
+						</div>
+					</div>
+        	</div>
+        </div>
+
+        <div class="row">
+            <error cause="errorCode" ng-if="errorCode"></error>
+            <div class="clearfix"></div>
+            <div class="form-group col-sm-2 col-sm-offset-10">
+                <next-button callback="storeSession"/>
+            </div>
+        </div>
+    </form>
 </div>
