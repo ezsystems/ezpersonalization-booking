@@ -80,6 +80,11 @@ sub {
 img {
   border: 0;
 }
+.image-logo-ez  {
+  border: 0;
+  position: relative;
+  top: -5px;
+}
 svg:not(:root) {
   overflow: hidden;
 }

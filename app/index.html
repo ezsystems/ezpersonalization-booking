@@ -49,7 +49,9 @@
                 </button>
 
 				<a ng-if="$location.host().indexOf('ezservices') === -1" class="navbar-brand" href="#"> Yoochoose GmbH </a>
-				<a ng-if="$location.host().indexOf('ezservices') !== -1" class="navbar-brand" href="#"> eZ &reg; </a>
+				<a ng-if="$location.host().indexOf('ezservices') !== -1" class="navbar-brand" href="#">
+					<img src="http://ez.no/bundles/eznodesign/images/logo-ez.svg" height="30px" class="image-logo-ez">
+				</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -148,13 +150,10 @@
 	<!-- this script is here and not in head because it will not be written in the dist/index.html -->
 	<script type="text/javascript">
        //when in eZ site, load eZ css; else load Yoochoose css 
-       console.log('wLH:', window.location.hostname);
-       console.log('boolean:', window.location.hostname.indexOf('ezservices') === -1 );
        var stylesheetToInclude = 
            window.location.hostname.indexOf('ezservices') === -1 ?
                '<link rel="stylesheet" href="styles/bootstrap.css" type="text/css">' :  
                '<link rel="stylesheet" href="styles/bootstrap_ez.css" type="text/css">';
-       console.log(stylesheetToInclude);
        document.write( stylesheetToInclude );
     </script>
 
