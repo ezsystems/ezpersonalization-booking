@@ -1,7 +1,8 @@
 <div class="jumbotron" style="margin-top: -20px;">
     <div class="container">
         <h1>{{'finished_header' |translate}}</h1>
-        <p>{{'finished_header_small' | translate}}</p>
+        <p ng-if="$location.host().indexOf('ezservices') === -1">{{'finished_header_small_yc' | translate}}</p>
+        <p ng-if="$location.host().indexOf('ezservices') !== -1">{{'finished_header_small_ez' | translate}}</p>
     </div>
 </div>
 

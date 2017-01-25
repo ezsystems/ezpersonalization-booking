@@ -51,6 +51,7 @@ angular
                 .determinePreferredLanguage();
             $translateProvider.fallbackLanguage('en');
             $translateProvider.useMissingTranslationHandlerLog();
+            $translateProvider.useSanitizeValueStrategy('escapeParameters');
 
             $locationProvider.html5Mode(true);
             //            $urlRouterProvider.when(/.*paymentReturn.*/, function ($location, $sessionStorage) {
