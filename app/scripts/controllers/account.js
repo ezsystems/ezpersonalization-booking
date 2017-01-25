@@ -6,8 +6,9 @@
  * Controller of the ycBookingApp
  */
 angular.module('ycBookingApp')
-    .controller('AccountCtrl', function ($timeout, $state, $scope, $sessionStorage, loginData, $translate, ycRestfrontend) {
+    .controller('AccountCtrl', function ($timeout, $state, $scope, $sessionStorage, loginData, $translate, ycRestfrontend, $location) {
         'use strict';
+        $scope.$location = $location;
         $scope.ready = false;
 
         $scope.timezones = moment.tz.names();
