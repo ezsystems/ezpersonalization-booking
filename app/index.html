@@ -48,8 +48,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-				<a ng-if="$location.host().indexOf('ezservices') === -1" class="navbar-brand" href="#"> Yoochoose GmbH </a>
-				<a ng-if="$location.host().indexOf('ezservices') !== -1" class="navbar-brand" href="#">
+				<a class="navbar-brand" href="#">
 					<img src="images/logo-ez.svg" height="50px" class="image-logo-ez">
 				</a>
 			</div>
@@ -81,12 +80,9 @@
 	</nav>
 	<div ui-view></div>
 	<div class="container">
-		<hr />
-		<footer ng-if="$location.host().indexOf('ezservices') === -1">
-			<span> &copy; Yoochoose GmbH 2017 </span>
-		</footer>
+
 	</div>
-    <footer id="footer" ng-if="$location.host().indexOf('ezservices') !== -1">
+    <footer id="footer">
         <div class="footer-content">
             <div class="ez-container">
                 <div class="row">
@@ -219,11 +215,7 @@
 
 	<!-- this script is here and not in head because it will not be written in the dist/index.html -->
 	<script type="text/javascript">
-       //when in eZ site, load eZ css; else load Yoochoose css 
-       var stylesheetToInclude = 
-           window.location.hostname.indexOf('ezservices') === -1 ?
-               '<link rel="stylesheet" href="styles/bootstrap.css" type="text/css">' :  
-               '<link rel="stylesheet" href="styles/bootstrap_ez.css" type="text/css">';
+       var stylesheetToInclude = '<link rel="stylesheet" href="styles/bootstrap_ez.css" type="text/css">';
        document.write( stylesheetToInclude );
     </script>
 
